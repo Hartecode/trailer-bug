@@ -1,1 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: 'PT Sans';
+    src: url('https://fonts.googleapis.com/css?family=PT+Sans&display=swap');
+}
+
+body {
+    font-family: 'PT Sans', sans-serif;
+}
+
+h1, h2, h3 {
+    line-height: 1rem;
+    letter-spacing: 0.0825rem;
+    margin: 0;
+}
+
+p {
+    line-height: 1rem;
+    margin: 0;
+}
+
+figure {
+    margin: 0;
+}
