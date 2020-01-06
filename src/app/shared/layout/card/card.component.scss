@@ -1,0 +1,106 @@
+:host {
+    display: block;
+}
+
+.card-container {
+    background-color: rgb(232, 230, 230);
+    border: 0.0625rem solid #b1b1b1;
+    border-top: 0;
+    box-sizing: border-box;
+    position: relative;
+
+    &:hover {
+        .link,
+        .dec, 
+        .date {
+            display: block;
+            margin: 0.5rem 0;
+        }
+
+        .img-container {
+            margin-bottom: 2rem;
+        }
+
+        .overlay {
+            height: 100%;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .detail-container {
+            background-color: rgba(232, 230, 230, 0.9);
+            box-sizing: border-box;
+            height: calc(100% * (2/3));
+        }
+
+        .play {
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.25);
+            cursor: pointer;
+            display: flex;
+            height: calc(100% * (1/3));
+            justify-content: center;
+            width: 100%;
+        }
+        
+    }
+}
+
+.img-container {
+    height: 0;
+    overflow: hidden;
+    padding-top: calc(100% * (3/2));
+    position: relative;
+}
+
+.image {
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.detail-container {
+    box-sizing: border-box;
+    padding: 0.5rem;
+    transition: all 0.5s ease-in-out;
+
+    h3 {
+        font-size: 18px;
+    }
+}
+
+.link,
+.play,
+.dec, 
+.date {
+    display: none;
+}
+
+.play {
+    border: none;
+    height: 100%;
+    padding: 0;
+    transition: all 1s ease-in;
+}
+
+.play-icon {
+    font-size: 5rem;
+    height: auto;
+    width: auto;
+
+    &:hover {
+        color: rgb(255, 255, 255);
+    }
+
+    &:active {
+        color: rgb(50, 50, 185);
+    }
+}
+
+
+.link {
+    color: rgb(50, 50, 185);
+}
