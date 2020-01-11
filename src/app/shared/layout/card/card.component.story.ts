@@ -1,10 +1,10 @@
 import {action} from '@storybook/addon-actions';
 import {withA11y} from '@storybook/addon-a11y';
 import {storiesOf, moduleMetadata} from '@storybook/angular';
-import {layoutSchema} from '../layout.module';
+import {cardSchema} from './card.module';
 import {CardComponent, Card} from './card.component';
 
-const cardProps = ({
+export const cardProps = ({
     id = '123',
     image = {
         src: 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/kMsijYa8gOJXrmhHLOi2bGTKLO6.jpg',
@@ -22,7 +22,7 @@ const cardProps = ({
 });
 
 storiesOf('Card', module)
-.addDecorator(moduleMetadata(layoutSchema))
+.addDecorator(moduleMetadata(cardSchema))
 .addDecorator(withA11y)
 .add('sample', () => ({
   component: CardComponent,

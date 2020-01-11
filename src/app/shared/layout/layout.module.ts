@@ -1,14 +1,16 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {CardComponent} from './card/card.component';
-import {MatIconModule} from '@angular/material/icon';
+import {CardModule} from './card/card.module';
 
 
 export const layoutSchema = {
-  declarations: [CardComponent],
+  declarations: [],
   imports: [
-    CommonModule,
-    MatIconModule
+    CardModule,
+    CommonModule
+  ],
+  exports: [
+    CardModule
   ]
 };
 

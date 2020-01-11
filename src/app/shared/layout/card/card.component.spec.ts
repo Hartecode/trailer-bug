@@ -1,5 +1,5 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-import {layoutSchema} from '../layout.module';
+import {cardSchema} from './card.module';
 import {CardComponent} from './card.component';
 
 describe('CardComponent', () => {
@@ -7,7 +7,7 @@ describe('CardComponent', () => {
   let fixture: ComponentFixture<CardComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule(layoutSchema)
+    TestBed.configureTestingModule(cardSchema)
     .compileComponents();
   }));
 
