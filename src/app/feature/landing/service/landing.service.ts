@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { MovieDBConfigService } from '../../../global-services/movieDBConfig/movie-dbconfig.service';
+import { MovieDBConfigService } from '../../../global/movieDBConfig/movie-dbconfig.service';
 import { MovieDB } from '../../../../config/config';
 
 @Injectable({
