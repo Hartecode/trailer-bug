@@ -13,7 +13,7 @@
     }
 }
 
-button {
+.nav-btn {
     background-color: rgba(0, 0, 0, 0.1);
     border: none;
     color: rgb(245, 245, 245);
@@ -28,6 +28,10 @@ button {
     top: 0;
     z-index: 99;
     width: 10%;
+
+    &:active {
+        color: rgb(37, 130, 167);
+    }
 
     &:nth-child(1) {
         left: 0;
@@ -44,7 +48,6 @@ ul {
 }
 
 .img-container {
-    flex: 1 0 100%;
     height: 0;
     overflow: hidden;
     padding-top: calc(100% * (9/16));
@@ -77,13 +80,21 @@ img {
 }
 
 .bullet {
-    background-color: rgb(245, 245, 245);
-    border-radius: 50%;
-    height: 0.5rem;
     margin: 1rem;
+}
+
+.bullet-btn {
+    border: none;
+    border: 0.0625rem solid rgb(245, 245, 245);
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+    height: 0.5rem;
+    padding: 0;
     width: 0.5rem;
 }
 
 .selected {
     background-color: rgb(37, 130, 167);
+    border-color: rgb(37, 130, 167);
 }

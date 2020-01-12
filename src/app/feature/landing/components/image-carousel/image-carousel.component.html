@@ -1,13 +1,13 @@
 <div *ngIf="images" class="container">
-  <button (click)="onBack()">
+  <button  class="nav-btn" (click)="onBack()">
     <mat-icon class="icon" label="back">navigate_before</mat-icon>
   </button>
-  <button (click)="onForward()">
+  <button class="nav-btn" (click)="onForward()">
     <mat-icon class="icon" label="forward">navigate_next</mat-icon>
   </button>
-  <ul>
+  <ul [@slideAnimation]="selectedImage">
     <ng-container *ngFor="let img of images; let i = index">
-      <li *ngIf="selectedImage === i" class="img-container" [@enterInOut]>
+      <li *ngIf="selectedImage === i" class="img-container">
         <img [src]="img.src" [alt]="img.alt" [title]="img.title" />
       </li>
     </ng-container>
@@ -15,10 +15,14 @@
   <ul class="bullet-container">
     <li *ngFor="let img of images; let i = index"
     class="bullet"
-    [ngClass]="{
-      'selected': selectedImage === i
-    }"
     >
+      <button class="bullet-btn" 
+        [ngClass]="{
+          'selected': selectedImage === i
+        }"
+        (click)="selectedImage = i"
+        [aria.label]="img.title">
+      </button>
     </li>
   </ul>
 </div>

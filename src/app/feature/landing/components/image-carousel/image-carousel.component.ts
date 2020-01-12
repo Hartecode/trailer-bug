@@ -1,33 +1,15 @@
-import {Component, Input} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {Image} from '../../../../global/model/gobal-model';
-import { trigger, transition, animate, style } from '@angular/animations';
+import {slideAnimations} from './image-carousel.animations';
+
 
 @Component({
   selector: 'app-image-carousel',
   templateUrl: './image-carousel.component.html',
   styleUrls: ['./image-carousel.component.scss'],
-  animations: [
-    trigger('enterInOut', [
-      transition(':enter', [
-        style({
-          transform: 'translateX(100%)',
-          opacity: 0
-        }),
-        animate('0.5s ease-out', style({
-          transform: 'translateX(0)',
-          opacity: 1
-        }))
-      ]),
-      transition(':leave', [
-        animate('0.25s ease-in-out', style({
-          transform: 'translateX(-100%)',
-          opacity: 0
-        }))
-      ])
-    ])
-  ]
+  animations: [slideAnimations]
 })
-export class ImageCarouselComponent {
+export class ImageCarouselComponent implements OnInit {
 
   @Input() images: Image[];
   @Input() selectedImage: number = 0;
@@ -35,28 +17,38 @@ export class ImageCarouselComponent {
 
   private timerId = this.startImageInterval();
 
-  public onBack() {
-    this.selectedImage = (this.selectedImage) ? this.selectedImage - 1 : this.images.length - 1;
+  ngOnInit() {
+    this.preloadImages();
+  }
+
+  public onBack(): void {
+    this.selectedImage = (this.selectedImage) ? --this.selectedImage : this.images.length - 1;
     this.restartInterval();
   }
 
-  public onForward() {
+  public onForward(): void {
     this.moveForward();
     this.restartInterval();
   }
 
-  private restartInterval() {
+  private preloadImages(): void {
+    this.images.forEach(img => {
+      (new Image()).src = img.src;
+    });
+  }
+
+  private restartInterval(): void {
     clearInterval(this.timerId);
     this.timerId = this.startImageInterval();
   }
 
-  private startImageInterval() {
+  private startImageInterval(): NodeJS.Timer {
     return setInterval(() => this.moveForward(), this.intervalTime);
   }
 
-  private moveForward() {
+  private moveForward(): void {
     this.selectedImage = (this.selectedImage !== this.images.length - 1) ?
-     this.selectedImage + 1 : this.selectedImage = 0;
+     ++this.selectedImage : 0;
   }
 
 }
