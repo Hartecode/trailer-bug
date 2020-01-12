@@ -2,9 +2,11 @@
   opening works!
 </p>
 
-<h3>Movies</h3>
-<div>
+<h3 class='title'>Recent Movies</h3>
+<div class="card-grid">
   <app-card *ngFor="let data of popularMovies" [data]="data" ></app-card>
 </div>
-<h3>TV</h3>
-<ul></ul>
+<h3 class='title'>Recent TV</h3>
+<div class="card-grid">
+  <app-card *ngFor="let data of popularMovies" [data]="data" ></app-card>
+</div>
