@@ -1,5 +1,6 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {Card} from '../../../../shared/layout/card/card.component';
+import {Image} from '../../../../global/model/gobal-model';
 
 @Component({
   selector: 'app-opening',
@@ -8,6 +9,7 @@ import {Card} from '../../../../shared/layout/card/card.component';
 })
 export class OpeningComponent implements OnInit {
 
+  @Input() featuredPosters: Image[];
   @Input() popularMovies: Card[];
 
   constructor() { }

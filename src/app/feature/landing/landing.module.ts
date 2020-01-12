@@ -5,7 +5,8 @@ import {RouterModule, Routes} from '@angular/router';
 import {OpeningComponent} from './templates/opening/opening.component';
 import {CardModule} from '../../shared/layout/card/card.module';
 import {MatIconModule} from '@angular/material/icon';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {ImageCarouselComponent} from './components/image-carousel/image-carousel.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 const crisisCenterRoutes: Routes = [
   {
@@ -17,7 +18,8 @@ const crisisCenterRoutes: Routes = [
 export const landingSchema = {
   declarations: [
     LandingContainerComponent,
-    OpeningComponent
+    OpeningComponent,
+    ImageCarouselComponent
   ],
   imports: [
     CommonModule,

@@ -15,10 +15,13 @@ export class ImageCarouselComponent implements OnInit {
   @Input() selectedImage: number = 0;
   @Input() intervalTime: number = 5000;
 
-  private timerId = this.startImageInterval();
+  private timerId: NodeJS.Timer;
 
   ngOnInit() {
-    this.preloadImages();
+    if (this.images) {
+      this.timerId = this.startImageInterval();
+      this.preloadImages();
+    }
   }
 
   public onBack(): void {

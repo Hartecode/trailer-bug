@@ -1,5 +1,5 @@
 :host {
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(183, 183, 183);
     display: block;
     padding: 0 1.5rem;
     margin: auto;
@@ -15,4 +15,5 @@
     display: grid;
     grid-gap: 1.5rem;
     grid-template-columns: repeat(auto-fill, 200px);
+    justify-content: center;
 }

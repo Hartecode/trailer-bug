@@ -5,9 +5,8 @@ export const slideAnimations = trigger('slideAnimation', [
       query(':enter', [
         style({
           transform: 'translateX(100%)',
-          opacity: 0
         }),
-        animate('0.5s ease-in-out', style('*'))
+        animate('0.5s ease-out', style('*'))
       ]),
       query(':leave', [
         animate('0.5s ease-in', style({
@@ -25,7 +24,7 @@ export const slideAnimations = trigger('slideAnimation', [
         animate('0.5s ease-out', style('*'))
       ]),
       query(':leave', [
-        animate('0.25s ease-out', style({
+        animate('0.5s ease-in', style({
           transform: 'translateX(100%)',
           opacity: 0
         }))
