@@ -7,7 +7,10 @@
   </button>
   <ul [@slideAnimation]="selectedImage">
     <ng-container *ngFor="let img of images; let i = index">
-      <li *ngIf="selectedImage === i" class="img-container">
+      <li *ngIf="selectedImage === i" 
+        class="img-container"
+        (swiperight)="onBack()"
+        (swipeleft)="onForward()">
         <img [src]="img.src" [alt]="img.alt" [title]="img.title" />
       </li>
     </ng-container>
@@ -21,7 +24,7 @@
           'selected': selectedImage === i
         }"
         (click)="selectedImage = i"
-        [aria.label]="img.title">
+        [attr.aria.label]="img.title">
       </button>
     </li>
   </ul>
