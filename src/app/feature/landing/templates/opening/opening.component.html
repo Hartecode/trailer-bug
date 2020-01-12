@@ -1,10 +1,15 @@
 <app-image-carousel [images]="featuredPosters"></app-image-carousel>
 
-<h3 class='title'>Recent Movies</h3>
-<div class="card-grid">
-  <app-card *ngFor="let data of popularMovies" [data]="data" ></app-card>
-</div>
-<h3 class='title'>Recent TV</h3>
-<div class="card-grid">
-  <app-card *ngFor="let data of popularMovies" [data]="data" ></app-card>
-</div>
+<section>
+  <h3 class='title'>Recent Movies Trailers</h3>
+  <div class="card-grid">
+    <app-card *ngFor="let data of popularMovies" [data]="data" ></app-card>
+  </div>
+</section>
+
+<section>
+  <h3 class='title'>Recent TV Shows Trailers</h3>
+  <div class="card-grid">
+    <app-card *ngFor="let data of popularMovies" [data]="data" ></app-card>
+  </div>
+</section>
