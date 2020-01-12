@@ -4,6 +4,8 @@ import {LandingContainerComponent} from './container/landing-container/landing-c
 import {RouterModule, Routes} from '@angular/router';
 import {OpeningComponent} from './templates/opening/opening.component';
 import {CardModule} from '../../shared/layout/card/card.module';
+import {MatIconModule} from '@angular/material/icon';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const crisisCenterRoutes: Routes = [
   {
@@ -20,7 +22,9 @@ export const landingSchema = {
   imports: [
     CommonModule,
     RouterModule.forChild(crisisCenterRoutes),
-    CardModule
+    CardModule,
+    MatIconModule,
+    BrowserAnimationsModule
   ],
   exports: [
     RouterModule
