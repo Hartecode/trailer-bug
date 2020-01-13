@@ -11,6 +11,7 @@ export class OpeningComponent implements OnInit {
 
   @Input() featuredPosters: Image[];
   @Input() popularMovies: Card[];
+  @Input() popularTV: Card[];
 
   constructor() { }
 

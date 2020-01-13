@@ -64,11 +64,14 @@
 
 .detail-container {
     box-sizing: border-box;
-    padding: 0.5rem;
+    padding: 0 0.5rem;
     transition: all 0.5s ease-in-out;
 
     h3 {
-        font-size: 18px;
+        font-size: 1.125rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 }
 

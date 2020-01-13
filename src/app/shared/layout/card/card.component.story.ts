@@ -5,7 +5,7 @@ import {cardSchema} from './card.module';
 import {CardComponent, Card} from './card.component';
 
 export const cardProps = ({
-    id = '123',
+    id = 1234,
     image = {
         src: 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/kMsijYa8gOJXrmhHLOi2bGTKLO6.jpg',
         alt: 'dracula'

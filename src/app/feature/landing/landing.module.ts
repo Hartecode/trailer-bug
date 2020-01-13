@@ -25,8 +25,7 @@ export const landingSchema = {
     CommonModule,
     RouterModule.forChild(crisisCenterRoutes),
     CardModule,
-    MatIconModule,
-    BrowserAnimationsModule
+    MatIconModule
   ],
   exports: [
     RouterModule

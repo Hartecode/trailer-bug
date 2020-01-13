@@ -8,9 +8,9 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class CardComponent {
 
   @Input() data: Card;
-
-  @Output() showVideo: EventEmitter<{id: string}> = new EventEmitter();
-  @Output() showPage: EventEmitter<{id: string}> = new EventEmitter();
+  @Input() descCharLimit: number = 60;
+  @Output() showVideo: EventEmitter<{id: number}> = new EventEmitter();
+  @Output() showPage: EventEmitter<{id: number}> = new EventEmitter();
 
   public onTriggerVideo() {
     this.showVideo.emit({id: this.data.id});
@@ -21,12 +21,12 @@ export class CardComponent {
   }
 
   public trimText(text: string) {
-    return (text.length > 150) ? `${text.substring(0, 150)}...` : text;
+    return (text.length > this.descCharLimit) ? `${text.substring(0, this.descCharLimit)}...` : text;
   }
 }
 
 export interface Card {
-  id: string;
+  id: number;
   image: {
     src: string;
     alt: string;

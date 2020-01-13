@@ -1,1 +1,5 @@
-<app-opening></app-opening>
+<app-opening *ngIf="(landing$ | async) as data"
+    [featuredPosters]="data.featuredPosters"
+    [popularMovies]="data.recentMovies"
+    [popularTV]="data.recentTV"
+></app-opening>
