@@ -6,7 +6,7 @@ import {HttpHeaders} from '@angular/common/http';
 import {Observable, Subject, combineLatest} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {Card} from '../../../shared/layout/card/card.component';
-import {Image} from '../../../global/model/gobal-model';
+import {Image} from '../../../global/models/global-models';
 
 @Injectable({
   providedIn: 'root'
@@ -33,8 +33,9 @@ export class LandingService {
       featuredPosters,
       recentTV,
       recentMovies
-    }
+    };
   }));
+
   public error$: Observable<PageError> = new Subject();
 
   constructor(
@@ -86,7 +87,7 @@ export class LandingService {
             src: `${this.movieApiConfig.fullImage(val.backdrop_path)}`,
             alt: val.original_title,
             title: val.title
-          }
+          };
         }).slice(0, 6);
       })
     );

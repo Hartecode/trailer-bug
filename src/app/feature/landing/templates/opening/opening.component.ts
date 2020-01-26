@@ -1,6 +1,6 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {Card} from '../../../../shared/layout/card/card.component';
-import {Image} from '../../../../global/model/gobal-model';
+import {Image} from '../../../../global/models/global-models';
 
 @Component({
   selector: 'app-opening',

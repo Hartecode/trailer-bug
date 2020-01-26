@@ -1,5 +1,5 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {Image} from '../../../../global/model/gobal-model';
+import {Image} from '../../../../global/models/global-models';
 import {slideAnimations} from './image-carousel.animations';
 
 

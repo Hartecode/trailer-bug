@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {LandingService} from '../../service/landing.service';
 
 @Component({
@@ -9,7 +9,7 @@ import {LandingService} from '../../service/landing.service';
 export class LandingContainerComponent implements OnInit {
 
   public landing$ = this.landingService.landing$;
-  
+
   constructor(private landingService: LandingService) { }
 
   ngOnInit() {
