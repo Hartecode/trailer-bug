@@ -10,11 +10,13 @@
     "e2e": "ng e2e",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "format": "tslint 'src/**/*.{ts,tsx,js}'"
+    "format": "tslint 'src/**/*.{ts,tsx}'"
   },
-  "hooks": {
-    "pre-commit": "npm format",
-    "pre-push": "npm format"
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run format",
+      "pre-push": "npm run format"
+    }
   },
   "private": true,
   "dependencies": {
