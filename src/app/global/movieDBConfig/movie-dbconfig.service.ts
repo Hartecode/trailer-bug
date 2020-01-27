@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { movieDBConfig, MovieDB } from '../../../config/config';
+import { MovieDB, movieDBConfig } from '../../../config/config';
 
 @Injectable({
   providedIn: 'root'

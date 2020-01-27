@@ -1,9 +1,14 @@
 {
-  "extends": "tslint:recommended",
+  "extends": [
+    "tslint:recommended",
+    "tslint-config-prettier"
+  ],
   "rulesDirectory": [
-    "codelyzer"
+    "codelyzer",
+    "tslint-plugin-prettier"
   ],
   "rules": {
+    "prettier": true,
     "array-type": false,
     "arrow-parens": false,
     "deprecation": {
@@ -15,32 +20,23 @@
     ],
     "interface-name": false,
     "max-classes-per-file": false,
-    "max-line-length": [
-      false,
-      140
-    ],
+    "max-line-length": [false],
     "member-access": false,
     "member-ordering": [
       true,
       {
         "order": [
-          "static-field",
-          "instance-field",
-          "static-method",
-          "instance-method"
+          "public-static-field",
+          "protected-static-field",
+          "public-static-method",
+          "protected-static-method"
         ]
       }
     ],
+    "no-any": true,
     "no-consecutive-blank-lines": false,
-    "no-console": [
-      true,
-      "debug",
-      "info",
-      "time",
-      "timeEnd",
-      "trace"
-    ],
-    "no-empty": false,
+    "no-console": true,
+    "no-empty": true,
     "no-inferrable-types": [
       false,
       "ignore-params"
@@ -50,16 +46,19 @@
     "no-switch-case-fall-through": true,
     "no-use-before-declare": true,
     "no-var-requires": false,
+    "object-curly-spacing": true,
     "object-literal-key-quotes": [
       true,
       "as-needed"
     ],
     "object-literal-sort-keys": false,
-    "ordered-imports": false,
+    "ordered-imports": [true],
     "quotemark": [
       true,
-      "single"
+      "single",
+      "avoid-escape"
     ],
+    "no-unused-variable": true,
     "trailing-comma": false,
     "no-output-on-prefix": true,
     "use-input-property-decorator": true,
@@ -70,6 +69,12 @@
     "use-life-cycle-interface": true,
     "use-pipe-transform-interface": true,
     "component-class-suffix": true,
-    "directive-class-suffix": true
+    "directive-class-suffix": true,
+    "unnecessary-constructor": [
+      true,
+      {
+        "check-super-calls": true
+      }
+    ]
   }
 }

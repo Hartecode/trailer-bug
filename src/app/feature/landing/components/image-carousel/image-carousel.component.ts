@@ -1,7 +1,6 @@
-import {Component, OnInit, Input} from '@angular/core';
-import {Image} from '../../../../global/models/global-models';
-import {slideAnimations} from './image-carousel.animations';
-
+import { Component, Input, OnInit } from '@angular/core';
+import { Image } from '../../../../global/models/global-models';
+import { slideAnimations } from './image-carousel.animations';
 
 @Component({
   selector: 'app-image-carousel',
@@ -10,7 +9,6 @@ import {slideAnimations} from './image-carousel.animations';
   animations: [slideAnimations]
 })
 export class ImageCarouselComponent implements OnInit {
-
   @Input() images: Image[];
   @Input() selectedImage: number = 0;
   @Input() intervalTime: number = 5000;
@@ -25,7 +23,9 @@ export class ImageCarouselComponent implements OnInit {
   }
 
   public onBack(): void {
-    this.selectedImage = (this.selectedImage) ? --this.selectedImage : this.images.length - 1;
+    this.selectedImage = this.selectedImage
+      ? --this.selectedImage
+      : this.images.length - 1;
     this.restartInterval();
   }
 
@@ -36,7 +36,7 @@ export class ImageCarouselComponent implements OnInit {
 
   private preloadImages(): void {
     this.images.forEach(img => {
-      (new Image()).src = img.src;
+      new Image().src = img.src;
     });
   }
 
@@ -50,8 +50,7 @@ export class ImageCarouselComponent implements OnInit {
   }
 
   private moveForward(): void {
-    this.selectedImage = (this.selectedImage !== this.images.length - 1) ?
-     ++this.selectedImage : 0;
+    this.selectedImage =
+      this.selectedImage !== this.images.length - 1 ? ++this.selectedImage : 0;
   }
-
 }

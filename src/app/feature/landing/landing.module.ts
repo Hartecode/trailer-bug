@@ -1,12 +1,12 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {LandingContainerComponent} from './container/landing-container/landing-container.component';
-import {RouterModule, Routes} from '@angular/router';
-import {OpeningComponent} from './templates/opening/opening.component';
-import {CardModule} from '../../shared/layout/card/card.module';
-import {MatIconModule} from '@angular/material/icon';
-import {ImageCarouselComponent} from './components/image-carousel/image-carousel.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule, Routes } from '@angular/router';
+import { CardModule } from '../../shared/layout/card/card.module';
+import { ImageCarouselComponent } from './components/image-carousel/image-carousel.component';
+import { LandingContainerComponent } from './container/landing-container/landing-container.component';
+import { OpeningComponent } from './templates/opening/opening.component';
 
 const crisisCenterRoutes: Routes = [
   {
@@ -27,10 +27,8 @@ export const landingSchema = {
     CardModule,
     MatIconModule
   ],
-  exports: [
-    RouterModule
-  ]
+  exports: [RouterModule]
 };
 
 @NgModule(landingSchema)
-export class LandingModule { }
+export class LandingModule {}

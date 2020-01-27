@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-card',
@@ -6,22 +6,23 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent {
-
   @Input() data: Card;
   @Input() descCharLimit: number = 60;
-  @Output() showVideo: EventEmitter<{id: number}> = new EventEmitter();
-  @Output() showPage: EventEmitter<{id: number}> = new EventEmitter();
+  @Output() showVideo: EventEmitter<{ id: number }> = new EventEmitter();
+  @Output() showPage: EventEmitter<{ id: number }> = new EventEmitter();
 
   public onTriggerVideo() {
-    this.showVideo.emit({id: this.data.id});
+    this.showVideo.emit({ id: this.data.id });
   }
 
   public onTriggerPage() {
-    this.showPage.emit({id: this.data.id});
+    this.showPage.emit({ id: this.data.id });
   }
 
   public trimText(text: string) {
-    return (text.length > this.descCharLimit) ? `${text.substring(0, this.descCharLimit)}...` : text;
+    return text.length > this.descCharLimit
+      ? `${text.substring(0, this.descCharLimit)}...`
+      : text;
   }
 }
 
