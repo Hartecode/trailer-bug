@@ -1,12 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { landingSchema } from '../../landing.module';
 import { LandingContainerComponent } from './landing-container.component';
-import { landingContainerSchema } from './landing-container.module';
 
 const changedSchema = {
-  ...landingContainerSchema,
-  imports: [...landingContainerSchema.imports, HttpClientTestingModule]
+  ...landingSchema,
+  imports: [...landingSchema.imports, HttpClientTestingModule]
 };
 
 describe('LandingContainerComponent', () => {

@@ -1,7 +1,9 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { withA11y } from '@storybook/addon-a11y';
 import { moduleMetadata, storiesOf } from '@storybook/angular';
 import { landingSchema } from '../../landing.module';
 import { ImageCarouselComponent } from './image-carousel.component';
+import { imageCarouselSchema } from './image-carousel.module';
 
 export const unsplashApi = (code: string) =>
   `https://source.unsplash.com/${code}/1600x900`;
@@ -22,8 +24,13 @@ export const imageArray = (imgArr: string[], fuc: (c: string) => string) =>
     title: `Panda ${i + 1}`
   }));
 
+const changedSchema = {
+  ...imageCarouselSchema,
+  imports: [...imageCarouselSchema.imports, BrowserAnimationsModule]
+};
+
 storiesOf('Image Carousel', module)
-  .addDecorator(moduleMetadata(landingSchema))
+  .addDecorator(moduleMetadata(changedSchema))
   .addDecorator(withA11y)
   .add('sample', () => ({
     component: ImageCarouselComponent,
