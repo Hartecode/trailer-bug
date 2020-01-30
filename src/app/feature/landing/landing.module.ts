@@ -5,27 +5,27 @@ import { MatIconModule } from '@angular/material/icon';
 import { RouterModule, Routes } from '@angular/router';
 import { CardModule } from '../../shared/layout/card/card.module';
 import { ImageCarouselComponent } from './components/image-carousel/image-carousel.component';
-import { LandingContainerComponent } from './container/landing-container/landing-container.component';
-import { OpeningComponent } from './templates/opening/opening.component';
+// import { LandingContainerModule } from './container/landing-container/landing-container.module';
+import { OpeningModule } from './templates/opening/opening.module';
 
 const crisisCenterRoutes: Routes = [
   {
     path: '',
-    component: LandingContainerComponent
+    loadChildren: () =>
+      import('./container/landing-container/landing-container.module').then(
+        mod => mod.LandingContainerModule
+      )
   }
 ];
 
 export const landingSchema = {
-  declarations: [
-    LandingContainerComponent,
-    OpeningComponent,
-    ImageCarouselComponent
-  ],
+  declarations: [ImageCarouselComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(crisisCenterRoutes),
     CardModule,
-    MatIconModule
+    MatIconModule,
+    OpeningModule
   ],
   exports: [RouterModule]
 };

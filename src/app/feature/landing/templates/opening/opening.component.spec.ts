@@ -1,15 +1,13 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { OpeningComponent } from './opening.component';
+import { openingSchema } from './opening.module';
 
 describe('OpeningComponent', () => {
   let component: OpeningComponent;
   let fixture: ComponentFixture<OpeningComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [OpeningComponent]
-    }).compileComponents();
+    TestBed.configureTestingModule(openingSchema).compileComponents();
   }));
 
   beforeEach(() => {

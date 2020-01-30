@@ -6,13 +6,13 @@ import {
   imageCodes,
   unsplashApi
 } from '../../components/image-carousel/image-carousel.component.story';
-import { landingSchema } from '../../landing.module';
 import { OpeningComponent } from './opening.component';
+import { openingSchema } from './opening.module';
 
 const movies = Array(6).fill(cardProps({}));
 
 storiesOf('Template/Opening', module)
-  .addDecorator(moduleMetadata(landingSchema))
+  .addDecorator(moduleMetadata(openingSchema))
   .addDecorator(withA11y)
   .add('sample', () => ({
     component: OpeningComponent,
