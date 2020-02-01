@@ -8,19 +8,20 @@
 section {
     background-color: rgb(245, 245, 245);
     padding: 2rem 1.5rem;
-    margin-top: 4rem;
+    margin: 0 1.5rem;
 }
 
 .title {
     color: rgb(35, 80, 35);
     font-size: 2rem;
     margin-bottom:1.5rem;
+    text-align: center;
 }
 
 .card-grid {
     display: grid;
     grid-gap: 1rem 0.5rem;
-    grid-template-columns: repeat(auto-fill, 158px);
+    grid-template-columns: repeat(auto-fit, minmax(158px, 1fr));
     justify-content: center;
 }
 
@@ -28,7 +29,7 @@ section {
 @media only screen and (min-width: 700px) {
 
     section {
-        margin-top: 6rem;
+        margin: 0;
     }
 
     .title {

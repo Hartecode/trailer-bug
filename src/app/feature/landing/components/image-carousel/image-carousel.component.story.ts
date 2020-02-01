@@ -1,7 +1,6 @@
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { withA11y } from '@storybook/addon-a11y';
 import { moduleMetadata, storiesOf } from '@storybook/angular';
-import { landingSchema } from '../../landing.module';
+import { standardStorybookSchema } from '../../../../utils/storybook';
 import { ImageCarouselComponent } from './image-carousel.component';
 import { imageCarouselSchema } from './image-carousel.module';
 
@@ -24,13 +23,8 @@ export const imageArray = (imgArr: string[], fuc: (c: string) => string) =>
     title: `Panda ${i + 1}`
   }));
 
-const changedSchema = {
-  ...imageCarouselSchema,
-  imports: [...imageCarouselSchema.imports, BrowserAnimationsModule]
-};
-
 storiesOf('Image Carousel', module)
-  .addDecorator(moduleMetadata(changedSchema))
+  .addDecorator(moduleMetadata(standardStorybookSchema(imageCarouselSchema)))
   .addDecorator(withA11y)
   .add('sample', () => ({
     component: ImageCarouselComponent,
