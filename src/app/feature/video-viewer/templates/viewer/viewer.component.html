@@ -1,3 +1,29 @@
-<p>
-  viewer works!
-</p>
+<mat-drawer-container class="drawer-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <p>Auto-resizing sidenav</p>
+    <figure>
+      <button>
+        <mat-icon>play_circle_outline</mat-icon>
+      </button>
+      <figcaption>MDN Logo</figcaption>
+    </figure>
+  </mat-drawer>
+
+  <header>
+    <button (click)="drawer.toggle()">
+      <mat-icon>list</mat-icon>
+    </button>
+    <h2 class="title">Test Video</h2>
+  </header> 
+  <section class="main-video">
+    <iframe 
+      width="100%"
+      height="100%"
+      src="https://www.youtube.com/embed/Fru8IkuDp_k"
+      frameborder="0"
+      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </section>
+</mat-drawer-container>
+

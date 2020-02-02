@@ -1,0 +1,38 @@
+:host {
+    display: block;
+}
+
+header {
+    background-color: rgb(143, 143, 143);
+    color: rgb(35, 80, 35);
+    display: flex;
+}
+
+.title {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.main-video {
+    padding-top: 100% * (315px/560px);
+    position: relative;
+    height: 0;
+    width: 100%;
+
+    iframe {
+        position: absolute;
+        top: 0;
+    }
+}
+
+.drawer-container {
+    background-color: rgb(143, 143, 143);
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    height: 100vh;
+    width: 100%;
+}
+
+.example-sidenav {
+    padding: 20px;
+    width: 200px;
+}
