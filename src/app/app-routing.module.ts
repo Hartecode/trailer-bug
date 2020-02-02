@@ -14,6 +14,11 @@ const routes: Routes = [
         mod => mod.VideoViewerModule
       ),
     outlet: 'viewer'
+  },
+  {
+    path: '',
+    redirectTo: '',
+    pathMatch: 'full'
   }
 ];
 
