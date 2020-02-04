@@ -1,0 +1,6 @@
+<figure *ngIf="thumbnail">
+  <button (click)="onClick()" [attr.aria-label]="'watch' + thumbnail.title">
+    <mat-icon>play_circle_outline</mat-icon>
+  </button>
+  <figcaption>{{thumbnail.title}}</figcaption>
+</figure>

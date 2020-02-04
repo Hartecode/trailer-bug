@@ -1,0 +1,30 @@
+:host {
+    display: block;
+}
+
+button {
+    background-color: rgb(70, 67, 67);
+    border: 1px solid rgb(12, 12, 12);
+    color: rgb(241, 241, 241);
+    cursor: pointer;
+    padding: 0;
+    padding-top: 50%;
+    position: relative;
+    width: 100%;
+
+    &:active {
+        mat-icon {
+            color: rgb(50, 119, 50);
+        }
+    }
+}
+
+mat-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 5rem;
+    height: 5rem;
+    font-size: 5rem;
+}
