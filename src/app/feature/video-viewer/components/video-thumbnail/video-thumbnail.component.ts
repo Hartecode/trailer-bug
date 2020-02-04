@@ -7,7 +7,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class VideoThumbnailComponent {
   @Input() thumbnail?: VideoThumbnail;
-  @Output() selected: EventEmitter<number> = new EventEmitter<number>();
+
+  @Output()
+  selected: EventEmitter<number> = new EventEmitter<number>();
 
   public onClick() {
     if (this.thumbnail) {
