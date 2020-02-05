@@ -3,8 +3,8 @@
 }
 
 header {
-    background-color: rgb(143, 143, 143);
-    color: rgb(35, 80, 35);
+    background-color: rgb(87, 87, 87);
+    color: rgb(81, 189, 81);
     display: flex;
 }
 
@@ -17,10 +17,20 @@ app-video-thumbnail {
     text-align: center;
 }
 
+section {
+    background-color: black;
+}
+
+.outer-container {
+    max-width: 1280px;
+    margin: auto;
+}
+
 .main-video {
-    padding-top: 100% * (315px/560px);
+    padding-top: 100% * (19.6875rem/35rem);
     position: relative;
     height: 0;
+    margin: auto;
     width: 100%;
 
     iframe {
