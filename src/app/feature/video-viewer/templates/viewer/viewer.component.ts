@@ -29,7 +29,6 @@ export class ViewerComponent implements OnInit {
   constructor(private sanitizer: DomSanitizer) {}
 
   ngOnInit() {
-    console.log('is running');
     if (this.videoList) {
       this.selectedVideo(this.selectOption);
     }
