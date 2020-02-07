@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { LandingService } from '../../service/landing.service';
 
 @Component({
@@ -9,5 +10,9 @@ import { LandingService } from '../../service/landing.service';
 export class LandingContainerComponent {
   public landing$ = this.landingService.landing$;
 
-  constructor(private landingService: LandingService) {}
+  constructor(private landingService: LandingService, private router: Router) {}
+
+  public openModel(id) {
+    this.router.navigate([{ outlets: { viewer: [id] } }]);
+  }
 }

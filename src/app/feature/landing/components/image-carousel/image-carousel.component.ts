@@ -18,7 +18,6 @@ export class ImageCarouselComponent implements OnInit {
   ngOnInit() {
     if (this.images) {
       this.timerId = this.startImageInterval();
-      this.preloadImages();
     }
   }
 
@@ -32,12 +31,6 @@ export class ImageCarouselComponent implements OnInit {
   public onForward(): void {
     this.moveForward();
     this.restartInterval();
-  }
-
-  private preloadImages(): void {
-    this.images.forEach(img => {
-      new Image().src = img.src;
-    });
   }
 
   private restartInterval(): void {

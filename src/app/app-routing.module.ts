@@ -5,10 +5,11 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('./feature/landing/landing.module').then(mod => mod.LandingModule)
+      import('./feature/landing/landing.module').then(mod => mod.LandingModule),
+    pathMatch: 'prefix'
   },
   {
-    path: 'video',
+    path: ':id',
     loadChildren: () =>
       import('./feature/video-viewer/video-viewer.module').then(
         mod => mod.VideoViewerModule
@@ -16,9 +17,9 @@ const routes: Routes = [
     outlet: 'viewer'
   },
   {
-    path: '',
-    redirectTo: '',
-    pathMatch: 'full'
+    path: '**',
+    loadChildren: () =>
+      import('./feature/landing/landing.module').then(mod => mod.LandingModule)
   }
 ];
 

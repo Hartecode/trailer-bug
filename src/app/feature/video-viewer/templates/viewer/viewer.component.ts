@@ -1,8 +1,10 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  EventEmitter,
   Input,
-  OnInit
+  OnInit,
+  Output
 } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { BehaviorSubject } from 'rxjs';
@@ -17,6 +19,8 @@ export class ViewerComponent implements OnInit {
   @Input() videoList: VideoItem[];
   @Input() selectOption: number = 0;
 
+  @Output() close = new EventEmitter<void>();
+
   private mainContentDeliveryBS = new BehaviorSubject<Data | null>(null);
   // used observable to deliver information so it can run outside change detection and wont reload
   // iframe when ever the toggle button is clicked
@@ -25,6 +29,7 @@ export class ViewerComponent implements OnInit {
   constructor(private sanitizer: DomSanitizer) {}
 
   ngOnInit() {
+    console.log('is running');
     if (this.videoList) {
       this.selectedVideo(this.selectOption);
     }
@@ -41,6 +46,10 @@ export class ViewerComponent implements OnInit {
       title: this.videoList[val].title,
       url: this.safeVideoURL(val)
     });
+  }
+
+  public closeViewer() {
+    this.close.emit();
   }
 }
 

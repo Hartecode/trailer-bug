@@ -8,6 +8,10 @@ const crisisCenterRoutes: Routes = [
   {
     path: '',
     component: LandingContainerComponent
+  },
+  {
+    path: '**',
+    component: LandingContainerComponent
   }
 ];
 
