@@ -9,7 +9,7 @@ export const movieDBConfig: MovieDB = {
   movie: (id: string) => `${movieDBConfig.baseApi}/3/movie/${id}`,
   video: (movieId: string) =>
     `${movieDBConfig.baseApi}/3/movie/${movieId}/videos`,
-  youTube: (key: string) => `https://youtu.be/${key}`,
+  youTube: (key: string) => `https://www.youtube.com/embed/${key}`,
   // Vimeo info : https://vimeo.zendesk.com/hc/en-us/articles/115004485728-Autoplaying-and-looping-embedded-videos
   vimeo: (key: string) => `https://player.vimeo.com/video/${key}`,
   discover: () => `${movieDBConfig.baseApi}/3/discover`,

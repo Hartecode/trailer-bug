@@ -12,11 +12,19 @@ import { Card } from '../../../shared/layout/card/card.component';
   providedIn: 'root'
 })
 export class LandingService {
-  private currentYear = new Date().getFullYear();
+  private currentDate = new Date();
+  private currentYear = this.currentDate.getFullYear();
+  private currentMonth = this.currentDate.getMonth();
+  private currentDay = this.currentDate.getDay();
+  private monthAgoDate = new Date(
+    this.currentDate.setMonth(this.currentDate.getMonth() - 1)
+  );
+  private lastMonthYear = this.monthAgoDate.getFullYear();
+  private lastMonth = this.monthAgoDate.getMonth();
+  private lastMonthDay = this.monthAgoDate.getDay();
   private movieApiConfig: MovieDB = this.movieDBService.apiConfig;
-  private discoverMovieApi: string = `${this.movieApiConfig.discover()}/movie?language=en-US&sort_by=release_date.asc&include_adult=false&include_video=false&page=1&primary_release_year=${
-    this.currentYear
-  }`;
+  private discoverMovieApi: string = `${this.movieApiConfig.discover()}/movie?sort_by=popularity.desc`;
+
   private discoverTVApi: string = `${this.movieApiConfig.discover()}/tv?language=en-US&sort_by=first_air_date.asc&first_air_date_year=${
     this.currentYear
   }&page=1&timezone=America%2FNew_York&include_null_first_air_dates=false`;
