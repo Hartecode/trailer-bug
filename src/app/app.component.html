@@ -1,11 +1,12 @@
 <header>
   <h1>{{title}}</h1>
   <!-- test link -->
-  <a [routerLink]="[{ outlets: { viewer: ['video', 7] } }]">show video</a>
+  <a [routerLink]="[{ outlets: { viewer: ['video', 495764] } }]">show video</a>
 </header>
-
 <router-outlet></router-outlet>
-<router-outlet name="viewer"></router-outlet>
+<div [@routeAnimations]="prepareRoute(outlet)" >
+  <router-outlet #outlet="outlet" name="viewer"></router-outlet>
+</div>
 <footer>
   footer
 </footer>
