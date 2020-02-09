@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
-import { map } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { MovieDBConfigService } from 'src/app/global/movieDBConfig/movie-dbconfig.service';
 import { MovieDB } from 'src/config/config';
 import { VideoItem } from '../templates/viewer/viewer.component';
@@ -26,9 +26,14 @@ export class MediaTrailersService {
     private http: HttpClient
   ) {}
 
-  public getMediaVideos(id: string): Observable<VideoItem[]> {
+  public getMediaVideos(id: string, media: string): Observable<VideoItem[]> {
+    const mediaTvUrls = {
+      tv: this.movieApiConfig.tvVideo(id),
+      movie: this.movieApiConfig.movieVideo(id)
+    };
+
     return this.http
-      .get<ServiceVideo>(this.movieApiConfig.video(id), this.httpOptions)
+      .get<ServiceVideo>(mediaTvUrls[media], this.httpOptions)
       .pipe(
         map(res => {
           return res.results.map(val => {
@@ -40,6 +45,11 @@ export class MediaTrailersService {
               url: val.site === 'YouTube' ? youTube(val.key) : vimoe(val.key)
             };
           });
+        }),
+        catchError(e => {
+          // tslint:disable-next-line: no-console
+          console.log(e);
+          return [];
         })
       );
   }

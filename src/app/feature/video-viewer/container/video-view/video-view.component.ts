@@ -22,8 +22,9 @@ export class VideoViewComponent implements OnInit {
     this.activeRoute.paramMap
       .pipe(
         switchMap(val => {
+          const media: string = val.get('media');
           const id = val.get('id');
-          return this.trailerService.getMediaVideos(id).pipe(
+          return this.trailerService.getMediaVideos(id, media).pipe(
             // tslint:disable-next-line: no-shadowed-variable
             tap(val => {
               this.trailers = val;

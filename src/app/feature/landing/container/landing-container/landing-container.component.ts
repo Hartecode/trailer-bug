@@ -12,7 +12,7 @@ export class LandingContainerComponent {
 
   constructor(private landingService: LandingService, private router: Router) {}
 
-  public openModel(id) {
-    this.router.navigate([{ outlets: { viewer: [id] } }]);
+  public openModel(e) {
+    this.router.navigate([{ outlets: { viewer: [e.media, e.id] } }]);
   }
 }

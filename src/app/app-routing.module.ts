@@ -9,7 +9,7 @@ const routes: Routes = [
     pathMatch: 'prefix'
   },
   {
-    path: ':id',
+    path: ':media/:id',
     loadChildren: () =>
       import('./feature/video-viewer/video-viewer.module').then(
         mod => mod.VideoViewerModule

@@ -7,8 +7,10 @@ export const movieDBConfig: MovieDB = {
     `https://image.tmdb.org/t/p/original${dbImage}`,
   baseApi: `https://api.themoviedb.org`,
   movie: (id: string) => `${movieDBConfig.baseApi}/3/movie/${id}`,
-  video: (movieId: string) =>
+  movieVideo: (movieId: string) =>
     `${movieDBConfig.baseApi}/3/movie/${movieId}/videos`,
+  tvVideo: (movieId: string) =>
+    `${movieDBConfig.baseApi}/3/tv/${movieId}/videos`,
   youTube: (key: string) => `https://www.youtube.com/embed/${key}`,
   // Vimeo info : https://vimeo.zendesk.com/hc/en-us/articles/115004485728-Autoplaying-and-looping-embedded-videos
   vimeo: (key: string) => `https://player.vimeo.com/video/${key}`,
@@ -22,7 +24,8 @@ export interface MovieDB {
   fullImage: (dbImage: string) => string;
   baseApi: string;
   movie: (id: string) => string;
-  video: (movieId: string) => string;
+  movieVideo: (movieId: string) => string;
+  tvVideo: (movieId: string) => string;
   youTube: (key: string) => string;
   vimeo: (key: string) => string;
   discover: () => string;

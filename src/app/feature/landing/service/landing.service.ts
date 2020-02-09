@@ -25,9 +25,7 @@ export class LandingService {
   private movieApiConfig: MovieDB = this.movieDBService.apiConfig;
   private discoverMovieApi: string = `${this.movieApiConfig.discover()}/movie?sort_by=popularity.desc`;
 
-  private discoverTVApi: string = `${this.movieApiConfig.discover()}/tv?language=en-US&sort_by=first_air_date.asc&first_air_date_year=${
-    this.currentYear
-  }&page=1&timezone=America%2FNew_York&include_null_first_air_dates=false`;
+  private discoverTVApi: string = `${this.movieApiConfig.discover()}/tv?language=en-US&sort_by=popularity.desc`;
   private trendingOfDay: string = `${this.movieApiConfig.trending()}/all/day`;
   private httpOptions = {
     headers: new HttpHeaders({

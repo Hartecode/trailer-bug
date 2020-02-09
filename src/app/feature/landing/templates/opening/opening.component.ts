@@ -12,9 +12,12 @@ export class OpeningComponent {
   @Input() popularMovies: Card[];
   @Input() popularTV: Card[];
 
-  @Output() showTrailerInModel: EventEmitter<number> = new EventEmitter();
+  @Output() showTrailerInModel: EventEmitter<{
+    id: number;
+    media: 'tv' | 'movie';
+  }> = new EventEmitter();
 
-  public displayVideo(e: { id: number }) {
-    this.showTrailerInModel.emit(e.id);
+  public displayVideo(e: { id: number }, media: 'tv' | 'movie') {
+    this.showTrailerInModel.emit({ id: e.id, media });
   }
 }

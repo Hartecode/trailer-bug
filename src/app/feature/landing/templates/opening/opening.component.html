@@ -1,23 +1,23 @@
-<app-image-carousel [images]="featuredPosters"></app-image-carousel>
+<!-- <app-image-carousel [images]="featuredPosters"></app-image-carousel> -->
 
 <section>
-  <h3 class='title'>Recent Movies Trailers</h3>
+  <h3 class='title'>Popular Movies Trailers</h3>
   <div class="card-grid">
     <app-card 
       *ngFor="let data of popularMovies"
       [data]="data"
-      (showVideo)="displayVideo($event)">
+      (showVideo)="displayVideo($event, 'movie')">
     </app-card>
   </div>
 </section>
 
 <section>
-  <h3 class='title'>Recent TV Shows Trailers</h3>
+  <h3 class='title'>Popular TV Shows Trailers</h3>
   <div class="card-grid">
     <app-card 
       *ngFor="let data of popularTV"
       [data]="data"
-      (showVideo)="displayVideo($event)">
+      (showVideo)="displayVideo($event, 'tv')">
     </app-card>
   </div>
 </section>
