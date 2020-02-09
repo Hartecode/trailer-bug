@@ -24,7 +24,7 @@ export class VideoViewComponent implements OnInit {
         switchMap(val => {
           const media: string = val.get('media');
           const id = val.get('id');
-          return this.trailerService.getMediaVideos(id, media).pipe(
+          return this.trailerService.getMediaVideos('495764', 'movie').pipe(
             // tslint:disable-next-line: no-shadowed-variable
             tap(val => {
               this.trailers = val;

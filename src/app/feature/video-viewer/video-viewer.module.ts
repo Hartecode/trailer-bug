@@ -18,8 +18,11 @@ export const VideoViewerSchema = {
     RouterModule.forChild(crisisCenterRoutes),
     ViewerModule
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  entryComponents: [VideoViewComponent]
 };
 
 @NgModule(VideoViewerSchema)
-export class VideoViewerModule {}
+export class VideoViewerModule {
+  static entry = VideoViewComponent;
+}

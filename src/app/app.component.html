@@ -2,11 +2,13 @@
   <h1>{{title}}</h1>
   <!-- test link -->
   <a [routerLink]="[{ outlets: { viewer: ['video', 495764] } }]">show video</a>
+  <button (click)="load()">load video</button>
 </header>
 <router-outlet></router-outlet>
 <div [@routeAnimations]="prepareRoute(outlet)" >
   <router-outlet #outlet="outlet" name="viewer"></router-outlet>
 </div>
+<ng-template #container></ng-template>
 <footer>
   footer
 </footer>

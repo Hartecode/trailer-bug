@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ViewContainerRef } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { LazyLoaderService } from './module-injecter/services/lazy-loader/lazy-loader.service';
 import { fader } from './route-animation';
 
 @Component({
@@ -11,6 +12,11 @@ import { fader } from './route-animation';
 export class AppComponent {
   public title = 'Trailer Bug';
 
+  @ViewChild('container', { read: ViewContainerRef })
+  container: ViewContainerRef;
+
+  constructor(private loader: LazyLoaderService) {}
+
   prepareRoute(outlet: RouterOutlet) {
     return (
       outlet &&
@@ -18,5 +24,10 @@ export class AppComponent {
       // tslint:disable-next-line: no-string-literal
       outlet.activatedRouteData['animation']
     );
+  }
+
+  load() {
+    this.container.clear();
+    this.loader.load('video-viewer', this.container);
   }
 }
