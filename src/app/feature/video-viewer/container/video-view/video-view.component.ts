@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterStateSnapshot } from '@angular/router';
 import { switchMap, tap } from 'rxjs/operators';
 import { MediaTrailersService } from '../../service/media-trailers.service';
@@ -12,6 +12,8 @@ import { VideoItem } from '../../templates/viewer/viewer.component';
 })
 export class VideoViewComponent implements OnInit {
   public trailers: VideoItem[];
+  @Input() data: { id: string; type: 'movie' | 'tv' };
+
   constructor(
     private trailerService: MediaTrailersService,
     private activeRoute: ActivatedRoute,
@@ -19,20 +21,29 @@ export class VideoViewComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.activeRoute.paramMap
+    this.trailerService
+      .getMediaVideos(this.data.id, this.data.type)
       .pipe(
-        switchMap(val => {
-          const media: string = val.get('media');
-          const id = val.get('id');
-          return this.trailerService.getMediaVideos('495764', 'movie').pipe(
-            // tslint:disable-next-line: no-shadowed-variable
-            tap(val => {
-              this.trailers = val;
-            })
-          );
+        // tslint:disable-next-line: no-shadowed-variable
+        tap(val => {
+          this.trailers = val;
         })
       )
       .subscribe();
+    // this.activeRoute.paramMap
+    //   .pipe(
+    //     switchMap(val => {
+    //       const media: string = val.get('media');
+    //       const id = val.get('id');
+    //       return this.trailerService.getMediaVideos('495764', 'movie').pipe(
+    //         // tslint:disable-next-line: no-shadowed-variable
+    //         tap(val => {
+    //           this.trailers = val;
+    //         })
+    //       );
+    //     })
+    //   )
+    //   .subscribe();
   }
 
   public close() {

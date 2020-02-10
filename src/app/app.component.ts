@@ -28,6 +28,11 @@ export class AppComponent {
 
   load() {
     this.container.clear();
-    this.loader.load('video-viewer', this.container);
+    this.loader.load('video-viewer', this.container, [
+      {
+        input: 'data',
+        data: { id: '495764', type: 'movie' }
+      }
+    ]);
   }
 }

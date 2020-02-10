@@ -22,7 +22,11 @@ export class LazyLoaderService {
     }
   ) {}
 
-  async load(name: string, container: ViewContainerRef) {
+  async load(
+    name: string,
+    container: ViewContainerRef,
+    componentInputs?: ComponentInput[]
+  ) {
     const ngModuleOrNgModuleFactory = await this.lazyWidgets[name]();
 
     let moduleFactory;
@@ -44,6 +48,19 @@ export class LazyLoaderService {
       entryComponent
     );
 
-    const comp = container.createComponent(compFactory);
+    const componentRef = container.createComponent(compFactory);
+
+    if (componentInputs && componentInputs.length > 0 && componentRef) {
+      componentInputs.forEach(v => {
+        // TODO: FIGURE OUT TYPE
+        // tslint:disable-next-line: no-any
+        (componentRef.instance as any)[v.input] = v.data;
+      });
+    }
   }
+}
+
+interface ComponentInput {
+  input: string;
+  data: unknown;
 }
