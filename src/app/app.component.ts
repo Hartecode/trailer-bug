@@ -1,15 +1,12 @@
-import { Component, ViewChild, ViewContainerRef } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { LazyLoaderService } from './module-injecter/services/lazy-loader/lazy-loader.service';
-import { fader } from './route-animation';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  animations: [fader]
+  styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   public title = 'Trailer Bug';
 
   @ViewChild('container', { read: ViewContainerRef })
@@ -17,22 +14,11 @@ export class AppComponent {
 
   constructor(private loader: LazyLoaderService) {}
 
-  prepareRoute(outlet: RouterOutlet) {
-    return (
-      outlet &&
-      outlet.activatedRouteData &&
-      // tslint:disable-next-line: no-string-literal
-      outlet.activatedRouteData['animation']
-    );
-  }
-
-  load() {
-    this.container.clear();
-    this.loader.load('video-viewer', this.container, [
-      {
-        input: 'data',
-        data: { id: '495764', type: 'movie' }
-      }
-    ]);
+  ngOnInit() {
+    // Need to register the dynamic region so it can be used throughout the app
+    this.loader.registerRegion({
+      ref: this.container,
+      key: 'appContainer'
+    });
   }
 }

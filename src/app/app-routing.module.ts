@@ -9,15 +9,6 @@ const routes: Routes = [
     pathMatch: 'prefix'
   },
   {
-    path: ':media/:id',
-    loadChildren: () =>
-      import('./feature/video-viewer/video-viewer.module').then(
-        mod => mod.VideoViewerModule
-      ),
-    data: { animation: 'isRight' },
-    outlet: 'viewer'
-  },
-  {
     path: '**',
     loadChildren: () =>
       import('./feature/landing/landing.module').then(mod => mod.LandingModule)
