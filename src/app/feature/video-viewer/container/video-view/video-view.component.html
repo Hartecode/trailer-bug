@@ -1,2 +1,2 @@
 <!-- // TODO: ADD ERROR PAGE -->
-<app-viewer *ngIf="trailers" [videoList]="trailers" (close)="onClose()"></app-viewer>
+<app-viewer *ngIf="trailers && !hide" [@enterAnimation] [videoList]="trailers" (close)="onClose()"></app-viewer>
