@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { GeneralSearchService } from './feature/search/services/general-search/general-search.service';
 import { LazyLoaderService } from './module-injecter/services/lazy-loader/lazy-loader.service';
 
 @Component({
@@ -8,11 +9,15 @@ import { LazyLoaderService } from './module-injecter/services/lazy-loader/lazy-l
 })
 export class AppComponent implements OnInit {
   public title = 'Trailer Bug';
+  public searchValue: string = '';
 
   @ViewChild('container', { read: ViewContainerRef })
   container: ViewContainerRef;
 
-  constructor(private loader: LazyLoaderService) {}
+  constructor(
+    private loader: LazyLoaderService,
+    private searchService: GeneralSearchService
+  ) {}
 
   ngOnInit() {
     // Need to register the dynamic region so it can be used throughout the app
@@ -20,5 +25,11 @@ export class AppComponent implements OnInit {
       ref: this.container,
       key: 'appContainer'
     });
+
+    this.searchService.searchResults$.subscribe();
+  }
+
+  public updateSearch(val: string) {
+    this.searchService.updateSearch(val);
   }
 }

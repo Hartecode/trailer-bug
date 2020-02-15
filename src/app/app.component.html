@@ -1,5 +1,14 @@
 <header>
   <h1>{{title}}</h1>
+  <form>
+    <label for="search">First name:</label>
+    <input 
+      (keyup)="updateSearch(searchValue)"
+      [(ngModel)]="searchValue"
+      type="text"
+      id="search"
+      name="search"> 
+  </form>
 </header>
 <router-outlet></router-outlet>
 <ng-template #container></ng-template>

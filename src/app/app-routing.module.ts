@@ -3,13 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'search',
     loadChildren: () =>
-      import('./feature/landing/landing.module').then(mod => mod.LandingModule),
-    pathMatch: 'prefix'
+      import('./feature/search/search.module').then(mod => mod.SearchModule)
   },
   {
-    path: '**',
+    path: '',
     loadChildren: () =>
       import('./feature/landing/landing.module').then(mod => mod.LandingModule)
   }
