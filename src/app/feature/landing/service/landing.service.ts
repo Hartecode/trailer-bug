@@ -65,7 +65,7 @@ export class LandingService {
               return {
                 id: val.id,
                 image: {
-                  src: `${this.movieApiConfig.image(500, val.poster_path)}`,
+                  src: this.movieApiConfig.image(500, val.poster_path),
                   alt: val.original_name
                 },
                 title: val.title,

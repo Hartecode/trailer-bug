@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CardModule } from '../../shared/layout/card/card.module';
 import { SearchComponent } from './container/search/search.component';
 
 const crisisCenterRoutes: Routes = [
@@ -12,7 +13,11 @@ const crisisCenterRoutes: Routes = [
 
 export const searchSchema = {
   declarations: [SearchComponent],
-  imports: [CommonModule, RouterModule.forChild(crisisCenterRoutes)],
+  imports: [
+    CardModule,
+    CommonModule,
+    RouterModule.forChild(crisisCenterRoutes)
+  ],
   exports: [RouterModule]
 };
 
