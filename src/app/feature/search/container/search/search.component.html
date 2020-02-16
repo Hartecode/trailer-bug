@@ -1,3 +1,18 @@
-<p>
-  search works!
-</p>
+<main *ngIf="(searchResults$ | async) as res">
+  <section>
+    <p>Page {{res.currentPage}} of {{res.totalPages}}</p>
+    <button 
+      (click)="backPage(res.currentPage)"
+      [disabled]="res.currentPage <= 1">previous page</button>
+    <button 
+      (click)="nextPage(res.currentPage, res.totalPages)"
+      [disabled]="res.currentPage >= res.totalPages">next page</button>
+  </section>
+  <section class="container">
+    <app-card 
+      *ngFor="let data of res.results"
+      [data]="data"
+      (showVideo)="openModel($event)">
+    </app-card>
+  </section>
+</main>

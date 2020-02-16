@@ -70,7 +70,8 @@ export class LandingService {
                 },
                 title: val.title,
                 description: val.overview,
-                releaseDate: val.first_air_date
+                releaseDate: val.first_air_date,
+                type: 'movie' as 'movie'
               };
             })
             .slice(0, 12);
@@ -93,7 +94,8 @@ export class LandingService {
               },
               title: val.name,
               description: val.overview,
-              releaseDate: val.first_air_date
+              releaseDate: val.first_air_date,
+              type: 'tv' as 'tv'
             }))
             .slice(0, 12);
         })

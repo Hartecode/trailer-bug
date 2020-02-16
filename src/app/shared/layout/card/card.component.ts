@@ -8,11 +8,11 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class CardComponent {
   @Input() data: Card;
   @Input() descCharLimit: number = 60;
-  @Output() showVideo: EventEmitter<{ id: number }> = new EventEmitter();
+  @Output() showVideo: EventEmitter<ShowVideo> = new EventEmitter();
   @Output() showPage: EventEmitter<{ id: number }> = new EventEmitter();
 
   public onTriggerVideo() {
-    this.showVideo.emit({ id: this.data.id });
+    this.showVideo.emit({ id: this.data.id, type: this.data.type });
   }
 
   public onTriggerPage() {
@@ -35,4 +35,10 @@ export interface Card {
   title: string;
   description: string;
   releaseDate: string;
+  type: 'tv' | 'movie';
+}
+
+export interface ShowVideo {
+  id: number;
+  type: 'tv' | 'movie';
 }

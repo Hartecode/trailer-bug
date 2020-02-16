@@ -25,8 +25,6 @@ export class AppComponent implements OnInit {
       ref: this.container,
       key: 'appContainer'
     });
-
-    this.searchService.searchResults$.subscribe();
   }
 
   public updateSearch(val: string) {

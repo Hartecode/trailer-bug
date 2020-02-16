@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { BehaviorSubject, combineLatest, Observable, of } from 'rxjs';
 import {
   catchError,
   debounceTime,
@@ -23,8 +23,17 @@ import {
   providedIn: 'root'
 })
 export class GeneralSearchService {
+  private pageBS: BehaviorSubject<number> = new BehaviorSubject<number>(1);
+  private page$: Observable<number> = this.pageBS
+    .asObservable()
+    .pipe(distinctUntilChanged());
   private searchBS: BehaviorSubject<string> = new BehaviorSubject<string>('');
-  private search$: Observable<string> = this.searchBS.asObservable();
+  private search$: Observable<string> = this.searchBS.asObservable().pipe(
+    filter(val => val.length > 1),
+    debounceTime(500),
+    distinctUntilChanged(),
+    tap(val => this.pageBS.next(1))
+  );
   public searchResults$ = this.runSearch();
 
   private movieApiConfig: MovieDB = this.movieDBService.apiConfig;
@@ -40,18 +49,19 @@ export class GeneralSearchService {
     private http: HttpClient
   ) {}
 
+  public updatePage(num: number) {
+    this.pageBS.next(num);
+  }
+
   public updateSearch(val: string): void {
     this.searchBS.next(val);
   }
 
   private runSearch(): Observable<SearchResults> {
-    return this.search$.pipe(
-      filter(val => val.length > 1),
-      debounceTime(500),
-      distinctUntilChanged(),
-      switchMap(val => {
+    return combineLatest([this.search$, this.page$]).pipe(
+      switchMap(([search, page]) => {
         return this.http.get<GeneralSearchResponse>(
-          this.movieApiConfig.search(val),
+          this.movieApiConfig.search(search, page),
           this.httpOptions
         );
       }),
@@ -65,11 +75,12 @@ export class GeneralSearchService {
             )
             .map((val: TVSearchResponse | MovieSearchResponse) => {
               return {
+                type: val.media_type,
                 id: val.id,
                 image: {
                   src: val.poster_path
                     ? this.movieApiConfig.image(500, val.poster_path)
-                    : '',
+                    : 'https://source.unsplash.com/evlkOfkQ5rE/400x225',
                   alt:
                     (val as MovieSearchResponse).original_title ||
                     (val as TVSearchResponse).original_name
@@ -85,8 +96,6 @@ export class GeneralSearchService {
             })
         };
       }),
-      // tslint:disable-next-line: no-console
-      tap(console.log),
       catchError(err => {
         // tslint:disable-next-line: no-console
         console.log(err);

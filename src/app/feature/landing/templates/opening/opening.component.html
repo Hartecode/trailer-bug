@@ -6,7 +6,7 @@
     <app-card 
       *ngFor="let data of popularMovies"
       [data]="data"
-      (showVideo)="displayVideo($event, 'movie')">
+      (showVideo)="displayVideo($event)">
     </app-card>
   </div>
 </section>
@@ -17,7 +17,7 @@
     <app-card 
       *ngFor="let data of popularTV"
       [data]="data"
-      (showVideo)="displayVideo($event, 'tv')">
+      (showVideo)="displayVideo($event)">
     </app-card>
   </div>
 </section>

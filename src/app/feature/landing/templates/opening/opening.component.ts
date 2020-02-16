@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Image } from '../../../../global/models/global-models';
-import { Card } from '../../../../shared/layout/card/card.component';
+import { Card, ShowVideo } from '../../../../shared/layout/card/card.component';
 
 @Component({
   selector: 'app-opening',
@@ -17,7 +17,7 @@ export class OpeningComponent {
     media: 'tv' | 'movie';
   }> = new EventEmitter();
 
-  public displayVideo(e: { id: number }, media: 'tv' | 'movie') {
-    this.showTrailerInModel.emit({ id: e.id, media });
+  public displayVideo(e: ShowVideo) {
+    this.showTrailerInModel.emit({ id: e.id, media: e.type });
   }
 }

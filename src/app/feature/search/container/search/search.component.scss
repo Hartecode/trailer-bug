@@ -1,0 +1,10 @@
+:host {
+    display: block;
+}
+
+.container {
+    display: grid;
+    grid-gap: 1rem 0.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(158px, 1fr));
+    justify-content: center;
+}
