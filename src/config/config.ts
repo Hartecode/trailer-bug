@@ -16,8 +16,8 @@ export const movieDBConfig: MovieDB = {
   vimeo: (key: string) => `https://player.vimeo.com/video/${key}`,
   discover: () => `${movieDBConfig.baseApi}/3/discover`,
   trending: () => `${movieDBConfig.baseApi}/3/trending`,
-  search: (val: string) =>
-    `${movieDBConfig.baseApi}/3/search/multi?language=en-US&query=${val}&page=1&include_adult=false`
+  search: (val: string, pageNum: number = 1) =>
+    `${movieDBConfig.baseApi}/3/search/multi?language=en-US&query=${val}&page=${pageNum}&include_adult=false`
 };
 
 export interface MovieDB {
@@ -32,5 +32,5 @@ export interface MovieDB {
   vimeo: (key: string) => string;
   discover: () => string;
   trending: () => string;
-  search: (val: string) => string;
+  search: (val: string, pageNum: number) => string;
 }
