@@ -1,5 +1,12 @@
 :host {
     display: block;
+    min-height: 80vh;
+}
+
+.main-results {
+    max-width: 1408px;
+    margin: auto;
+    padding: 0 24px;
 }
 
 .container {
@@ -7,4 +14,19 @@
     grid-gap: 1rem 0.5rem;
     grid-template-columns: repeat(auto-fit, minmax(158px, 1fr));
     justify-content: center;
+}
+
+.main-no-results {
+    margin: 32px auto;
+    max-width: 648px;
+
+    .no-results {
+        background-color: #747474;
+        color: rgb(255, 255, 255);
+        font-size: 1.5rem;
+        padding: 2rem 1rem;
+        text-align: center;
+        margin: 0 24px;
+    }
+
 }

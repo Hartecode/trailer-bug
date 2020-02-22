@@ -1,4 +1,4 @@
-<main *ngIf="(searchResults$ | async) as res">
+<main *ngIf="(searchResults$ | async) as res; else noResults" class="main-results">
   <section>
     <p>Page {{res.currentPage}} of {{res.totalPages}}</p>
     <button 
@@ -15,4 +15,21 @@
       (showVideo)="openModel($event)">
     </app-card>
   </section>
+  <section>
+    <p>Page {{res.currentPage}} of {{res.totalPages}}</p>
+    <button 
+      (click)="backPage(res.currentPage)"
+      [disabled]="res.currentPage <= 1">previous page</button>
+    <button 
+      (click)="nextPage(res.currentPage, res.totalPages)"
+      [disabled]="res.currentPage >= res.totalPages">next page</button>
+  </section>
 </main>
+
+<ng-template #noResults>
+  <main class="main-no-results">
+    <div class="no-results">
+      <p>Search Movies, TV shows, and people</p>
+    </div>
+  </main>
+</ng-template>

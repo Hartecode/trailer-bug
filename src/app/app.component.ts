@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { Router } from '@angular/router';
 import { GeneralSearchService } from './feature/search/services/general-search/general-search.service';
 import { LazyLoaderService } from './module-injecter/services/lazy-loader/lazy-loader.service';
 
@@ -15,6 +16,7 @@ export class AppComponent implements OnInit {
   container: ViewContainerRef;
 
   constructor(
+    private router: Router,
     private loader: LazyLoaderService,
     private searchService: GeneralSearchService
   ) {}
@@ -27,7 +29,13 @@ export class AppComponent implements OnInit {
     });
   }
 
-  public updateSearch(val: string) {
+  public goToSearch(val: string): void {
+    if (val) {
+      this.router.navigate(['/', 'search']);
+    }
+  }
+
+  public updateSearch(val: string): void {
     this.searchService.updateSearch(val);
   }
 }
