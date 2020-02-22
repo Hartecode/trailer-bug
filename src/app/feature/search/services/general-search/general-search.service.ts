@@ -54,7 +54,10 @@ export class GeneralSearchService {
   }
 
   public updateSearch(val: string): void {
-    this.searchBS.next(val);
+    const userInput: string = val.trim();
+    if (userInput) {
+      this.searchBS.next(userInput);
+    }
   }
 
   private runSearch(): Observable<SearchResults> {
@@ -93,13 +96,18 @@ export class GeneralSearchService {
                   (val as MovieSearchResponse).release_date ||
                   (val as TVSearchResponse).first_air_date
               };
-            })
+            }) as Card[]
         };
       }),
       catchError(err => {
         // tslint:disable-next-line: no-console
         console.log(err);
-        return of(err);
+        const errResp: SearchResults = {
+          currentPage: 0,
+          totalPages: 0,
+          results: []
+        };
+        return of(errResp);
       })
     );
   }
