@@ -4,29 +4,33 @@
 }
 
 .main-results {
-    max-width: 1408px;
+    max-width: 88rem;
     margin: auto;
-    padding: 0 24px;
+    padding: 0 1.5rem;
 }
 
 .container {
     display: grid;
     grid-gap: 1rem 0.5rem;
-    grid-template-columns: repeat(auto-fit, minmax(158px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(9.875rem, 1fr));
     justify-content: center;
 }
 
 .main-no-results {
-    margin: 32px auto;
-    max-width: 648px;
+    margin: 2rem auto;
+    max-width: 40.5rem;
 
     .no-results {
-        background-color: #747474;
+        background-color: rgb(116, 116, 116);
         color: rgb(255, 255, 255);
         font-size: 1.5rem;
         padding: 2rem 1rem;
         text-align: center;
-        margin: 0 24px;
+        margin: 0 1.5rem;
+    }
+
+    p {
+        line-height: 1.5rem;
     }
 
 }
