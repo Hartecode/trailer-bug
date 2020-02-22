@@ -6,6 +6,7 @@ import { cardSchema } from './card.module';
 
 export const cardProps = ({
   id = 1234,
+  type = 'tv' as 'tv',
   image = {
     src:
       'https://image.tmdb.org/t/p/w600_and_h900_bestv2/kMsijYa8gOJXrmhHLOi2bGTKLO6.jpg',
@@ -15,6 +16,7 @@ export const cardProps = ({
   description = 'In Transylvania in 1897, the blood-drinking Count is drawing his plans against Victorian London. And be warned: the dead travel fast.',
   releaseDate = 'June 22, 2018'
 }): Card => ({
+  type,
   id,
   image,
   title,
