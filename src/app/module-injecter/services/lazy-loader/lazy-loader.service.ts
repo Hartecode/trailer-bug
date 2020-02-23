@@ -48,8 +48,9 @@ export class LazyLoaderService {
     componentInputs?: ComponentInput[],
     componentOutputs?: ComponentOutput[]
   ) {
-    const region = this.state[regionKey].regionRef;
+    const region: ViewContainerRef = this.state[regionKey].regionRef;
     region.clear();
+
     const ngModuleOrNgModuleFactory = await this.lazyWidgets[name]();
     const subscriptions: Subscription[] = [];
     let moduleFactory;
