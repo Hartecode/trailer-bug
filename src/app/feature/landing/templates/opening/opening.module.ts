@@ -11,5 +11,9 @@ export const openingSchema = {
   exports: [OpeningComponent]
 };
 
-@NgModule(openingSchema)
+@NgModule({
+  declarations: [OpeningComponent],
+  imports: [CommonModule, CardModule, MatIconModule, ImageCarouselModule],
+  exports: [OpeningComponent]
+})
 export class OpeningModule {}

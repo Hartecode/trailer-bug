@@ -3,11 +3,15 @@ import { NgModule } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { ImageCarouselComponent } from './image-carousel.component';
 
-export const imageCarouselSchema = {
+export const imageCarouselSchema: NgModule = {
   declarations: [ImageCarouselComponent],
   imports: [CommonModule, MatIconModule],
   exports: [ImageCarouselComponent]
 };
 
-@NgModule(imageCarouselSchema)
+@NgModule({
+  declarations: [ImageCarouselComponent],
+  imports: [CommonModule, MatIconModule],
+  exports: [ImageCarouselComponent]
+})
 export class ImageCarouselModule {}

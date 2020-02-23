@@ -16,5 +16,14 @@ export const viewerSchema = {
   exports: [ViewerComponent]
 };
 
-@NgModule(viewerSchema)
+@NgModule({
+  declarations: [ViewerComponent],
+  imports: [
+    CommonModule,
+    MatIconModule,
+    MatSidenavModule,
+    VideoThumbnailModule
+  ],
+  exports: [ViewerComponent]
+})
 export class ViewerModule {}

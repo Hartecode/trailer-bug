@@ -11,7 +11,7 @@ const crisisCenterRoutes: Routes = [
   }
 ];
 
-export const VideoViewerSchema = {
+export const VideoViewerSchema: NgModule = {
   declarations: [VideoViewComponent],
   imports: [
     CommonModule,
@@ -22,7 +22,16 @@ export const VideoViewerSchema = {
   entryComponents: [VideoViewComponent]
 };
 
-@NgModule(VideoViewerSchema)
+@NgModule({
+  declarations: [VideoViewComponent],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(crisisCenterRoutes),
+    ViewerModule
+  ],
+  exports: [RouterModule],
+  entryComponents: [VideoViewComponent]
+})
 export class VideoViewerModule {
   static entry = VideoViewComponent;
 }

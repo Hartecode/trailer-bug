@@ -11,7 +11,7 @@ const crisisCenterRoutes: Routes = [
   }
 ];
 
-export const searchSchema = {
+export const searchSchema: NgModule = {
   declarations: [SearchComponent],
   imports: [
     CardModule,
@@ -21,5 +21,13 @@ export const searchSchema = {
   exports: [RouterModule]
 };
 
-@NgModule(searchSchema)
+@NgModule({
+  declarations: [SearchComponent],
+  imports: [
+    CardModule,
+    CommonModule,
+    RouterModule.forChild(crisisCenterRoutes)
+  ],
+  exports: [RouterModule]
+})
 export class SearchModule {}

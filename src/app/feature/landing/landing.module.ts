@@ -15,7 +15,7 @@ const crisisCenterRoutes: Routes = [
   }
 ];
 
-export const landingSchema = {
+export const landingSchema: NgModule = {
   declarations: [LandingContainerComponent],
   imports: [
     CommonModule,
@@ -25,5 +25,13 @@ export const landingSchema = {
   exports: [RouterModule]
 };
 
-@NgModule(landingSchema)
+@NgModule({
+  declarations: [LandingContainerComponent],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(crisisCenterRoutes),
+    OpeningModule
+  ],
+  exports: [RouterModule]
+})
 export class LandingModule {}

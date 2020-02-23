@@ -3,11 +3,15 @@ import { NgModule } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { CardComponent } from './card.component';
 
-export const cardSchema = {
+export const cardSchema: NgModule = {
   declarations: [CardComponent],
   imports: [CommonModule, MatIconModule],
   exports: [CardComponent]
 };
 
-@NgModule(cardSchema)
+@NgModule({
+  declarations: [CardComponent],
+  imports: [CommonModule, MatIconModule],
+  exports: [CardComponent]
+})
 export class CardModule {}

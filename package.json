@@ -10,7 +10,8 @@
     "e2e": "ng e2e",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "format": "tslint 'src/**/*.{ts,tsx}'"
+    "format": "tslint 'src/**/*.{ts,tsx}'",
+    "build-serve": "ng build --prod && http-server -p 8080 -c-1 dist/trailer-bug"
   },
   "husky": {
     "hooks": {
