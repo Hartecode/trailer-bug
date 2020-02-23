@@ -1,9 +1,13 @@
 <div *ngIf="images" class="container">
   <button  class="nav-btn" (click)="onBack()">
-    <mat-icon class="icon" label="back">navigate_before</mat-icon>
+    <mat-icon class="icon" label="back">
+      <i>navigate_before</i>
+    </mat-icon>
   </button>
   <button class="nav-btn" (click)="onForward()">
-    <mat-icon class="icon" label="forward">navigate_next</mat-icon>
+    <mat-icon class="icon" label="forward">
+      <i>navigate_next</i>
+    </mat-icon>
   </button>
   <ul [@slideAnimation]="selectedImage">
     <ng-container *ngFor="let img of images; let i = index">
