@@ -24,7 +24,7 @@ export const cardProps = ({
   releaseDate
 });
 
-storiesOf('Card', module)
+storiesOf('shared/layout/Card', module)
   .addDecorator(moduleMetadata(cardSchema))
   .addDecorator(withA11y)
   .add('sample', () => ({

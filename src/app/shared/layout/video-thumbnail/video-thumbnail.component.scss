@@ -3,7 +3,7 @@
 }
 
 button {
-    background-color: rgb(70, 67, 67);
+    background-color: rgb(0, 0, 0);
     border: 1px solid rgb(12, 12, 12);
     color: rgb(241, 241, 241);
     cursor: pointer;
@@ -27,4 +27,13 @@ mat-icon {
     width: 5rem;
     height: 5rem;
     font-size: 5rem;
+    z-index: 1;
+}
+
+img {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0%);
 }
