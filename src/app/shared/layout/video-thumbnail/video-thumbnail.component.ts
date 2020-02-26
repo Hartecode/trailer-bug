@@ -21,4 +21,9 @@ export class VideoThumbnailComponent {
 export interface VideoThumbnail {
   index: number;
   title: string;
+  images: {
+    alt: string;
+    smallSrc: string;
+    largeSrc: string;
+  };
 }
