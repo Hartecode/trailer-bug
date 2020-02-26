@@ -56,6 +56,11 @@ export interface VideoItem {
   title: string;
   type: 'youtube' | 'vimoe';
   url: string;
+  images: {
+    alt: string;
+    smallSrc: string;
+    largeSrc: string;
+  };
 }
 
 interface Data {

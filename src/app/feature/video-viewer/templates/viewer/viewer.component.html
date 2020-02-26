@@ -2,7 +2,11 @@
   <mat-drawer #drawer class="example-sidenav" mode="side">
     <app-video-thumbnail 
       *ngFor="let item of videoList; let i = index"
-      [thumbnail]="{index: i, title: item.title}"
+      [thumbnail]="{
+        index: i,
+        title: item.title,
+        images: item.images
+      }"
       (selected)="selectedVideo(i)">
     </app-video-thumbnail>
   </mat-drawer>

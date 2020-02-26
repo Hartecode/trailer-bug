@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { catchError, map } from 'rxjs/operators';
 import { MovieDBConfigService } from 'src/app/global/movieDBConfig/movie-dbconfig.service';
-import { MovieDB } from 'src/config/config';
+import { KeyFunction, MovieDB } from 'src/config/config';
 import { VideoItem } from '../templates/viewer/viewer.component';
 
 @Injectable({
@@ -11,6 +11,13 @@ import { VideoItem } from '../templates/viewer/viewer.component';
 })
 export class MediaTrailersService {
   private movieApiConfig: MovieDB = this.movieDBService.apiConfig;
+  private youTubeVideo: KeyFunction = this.movieApiConfig.youTube;
+  private vimoeVideo: KeyFunction = this.movieApiConfig.vimeo;
+  private smallYouTubeThumbnail: KeyFunction = this.movieApiConfig
+    .youTubeThumbnail.default;
+  private largeYouTubeThumbnail: KeyFunction = this.movieApiConfig
+    .youTubeThumbnail.smallDefault;
+
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -37,12 +44,18 @@ export class MediaTrailersService {
       .pipe(
         map(res => {
           return res.results.map(val => {
-            const youTube = this.movieApiConfig.youTube;
-            const vimoe = this.movieApiConfig.vimeo;
             return {
               title: val.name,
               type: val.site as 'youtube' | 'vimoe',
-              url: val.site === 'YouTube' ? youTube(val.key) : vimoe(val.key)
+              url:
+                val.site === 'YouTube'
+                  ? this.youTubeVideo(val.key)
+                  : this.vimoeVideo(val.key),
+              images: {
+                alt: val.name,
+                smallSrc: this.smallYouTubeThumbnail(val.key),
+                largeSrc: this.largeYouTubeThumbnail(val.key)
+              }
             };
           });
         }),

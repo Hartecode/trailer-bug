@@ -12,6 +12,11 @@ export const movieDBConfig: MovieDB = {
   tvVideo: (movieId: string) =>
     `${movieDBConfig.baseApi}/3/tv/${movieId}/videos`,
   youTube: (key: string) => `https://www.youtube.com/embed/${key}`,
+  youTubeThumbnail: {
+    default: (key: string) => `https://img.youtube.com/vi/${key}/default.jpg`,
+    smallDefault: (key: string) =>
+      `https://img.youtube.com/vi/${key}/sddefault.jpg`
+  },
   // Vimeo info : https://vimeo.zendesk.com/hc/en-us/articles/115004485728-Autoplaying-and-looping-embedded-videos
   vimeo: (key: string) => `https://player.vimeo.com/video/${key}`,
   discover: () => `${movieDBConfig.baseApi}/3/discover`,
@@ -28,9 +33,15 @@ export interface MovieDB {
   movie: (id: string) => string;
   movieVideo: (movieId: string) => string;
   tvVideo: (movieId: string) => string;
-  youTube: (key: string) => string;
-  vimeo: (key: string) => string;
+  youTube: KeyFunction;
+  youTubeThumbnail: {
+    default: KeyFunction;
+    smallDefault: KeyFunction;
+  };
+  vimeo: KeyFunction;
   discover: () => string;
   trending: () => string;
   search: (val: string, pageNum: number) => string;
 }
+
+export type KeyFunction = (key: string) => string;
