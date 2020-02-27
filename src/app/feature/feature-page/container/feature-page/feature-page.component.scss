@@ -1,0 +1,52 @@
+:host {
+    background-color: rgb(63, 63, 63);
+    display: block;
+    padding: 0 1.5rem;
+}
+
+main {
+    background-color: #f3f3f3;;
+}
+
+.detail-container {
+    display: flex;
+    padding: 1rem;
+}
+
+.container-poster {
+    flex: 1;
+    margin-right: 1rem;
+    max-width: 200px;
+
+    img {
+        width: 100%;
+    }
+}
+
+.detail {
+    flex: 4;
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h3 {
+        font-size: 1rem;
+    }
+
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    li {
+        margin-right: 4px;
+    }
+}
+
+.video-banner {
+    background-color: rgb(0, 0, 0);
+    height: 0;
+    padding-top: 30%;
+    width: 100%;
+}
