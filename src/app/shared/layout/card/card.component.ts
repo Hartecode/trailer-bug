@@ -9,14 +9,14 @@ export class CardComponent {
   @Input() data: Card;
   @Input() descCharLimit: number = 60;
   @Output() showVideo: EventEmitter<ShowVideo> = new EventEmitter();
-  @Output() showPage: EventEmitter<{ id: number }> = new EventEmitter();
+  @Output() showPage: EventEmitter<ShowVideo> = new EventEmitter();
 
   public onTriggerVideo() {
     this.showVideo.emit({ id: this.data.id, type: this.data.type });
   }
 
   public onTriggerPage() {
-    this.showPage.emit({ id: this.data.id });
+    this.showPage.emit({ id: this.data.id, type: this.data.type });
   }
 
   public trimText(text: string) {

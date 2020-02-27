@@ -7,7 +7,7 @@ import { FeaturePageComponent } from './container/feature-page/feature-page.comp
 
 const crisisCenterRoutes: Routes = [
   {
-    path: ':media/:id',
+    path: ':id',
     component: FeaturePageComponent
   }
 ];

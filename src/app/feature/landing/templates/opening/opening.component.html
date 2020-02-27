@@ -6,6 +6,7 @@
     <app-card 
       *ngFor="let data of popularMovies"
       [data]="data"
+      (showPage)="goToPage($event)"
       (showVideo)="displayVideo($event)">
     </app-card>
   </div>
@@ -17,6 +18,7 @@
     <app-card 
       *ngFor="let data of popularTV"
       [data]="data"
+      (showPage)="goToPage($event)"
       (showVideo)="displayVideo($event)">
     </app-card>
   </div>

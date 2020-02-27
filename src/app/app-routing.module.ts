@@ -8,7 +8,14 @@ const routes: Routes = [
       import('./feature/search/search.module').then(mod => mod.SearchModule)
   },
   {
-    path: 'feature',
+    path: 'tv',
+    loadChildren: () =>
+      import('./feature/feature-page/feature-page.module').then(
+        mod => mod.FeaturePageModule
+      )
+  },
+  {
+    path: 'movie',
     loadChildren: () =>
       import('./feature/feature-page/feature-page.module').then(
         mod => mod.FeaturePageModule

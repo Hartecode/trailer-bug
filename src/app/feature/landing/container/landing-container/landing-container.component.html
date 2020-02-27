@@ -2,5 +2,6 @@
     [featuredPosters]="data.featuredPosters"
     [popularMovies]="data.recentMovies"
     [popularTV]="data.recentTV"
+    (gotMediaPage)=" navigateToPage($event)"
     (showTrailerInModel)="openModel($event)"
 ></app-opening>

@@ -17,7 +17,16 @@ export class OpeningComponent {
     media: 'tv' | 'movie';
   }> = new EventEmitter();
 
+  @Output() gotMediaPage: EventEmitter<{
+    id: number;
+    media: 'tv' | 'movie';
+  }> = new EventEmitter();
+
   public displayVideo(e: ShowVideo) {
     this.showTrailerInModel.emit({ id: e.id, media: e.type });
+  }
+
+  public goToPage(e: ShowVideo) {
+    this.gotMediaPage.emit({ id: e.id, media: e.type });
   }
 }
