@@ -6,5 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./feature-page.component.scss']
 })
 export class FeaturePageComponent implements OnInit {
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // hold
+  }
 }

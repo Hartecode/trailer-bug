@@ -8,6 +8,13 @@ const routes: Routes = [
       import('./feature/search/search.module').then(mod => mod.SearchModule)
   },
   {
+    path: 'feature',
+    loadChildren: () =>
+      import('./feature/feature-page/feature-page.module').then(
+        mod => mod.FeaturePageModule
+      )
+  },
+  {
     path: '',
     loadChildren: () =>
       import('./feature/landing/landing.module').then(mod => mod.LandingModule)
@@ -15,7 +22,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { enableTracing: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
