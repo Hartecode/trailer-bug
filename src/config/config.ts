@@ -11,6 +11,8 @@ export const movieDBConfig: MovieDB = {
     `${movieDBConfig.baseApi}/3/movie/${movieId}/videos`,
   tvVideo: (movieId: string) =>
     `${movieDBConfig.baseApi}/3/tv/${movieId}/videos`,
+  mediaFullInfo: (media: 'tv' | 'movie', key: string) =>
+    `https://api.themoviedb.org/3/${media}/${key}`,
   youTube: (key: string) => `https://www.youtube.com/embed/${key}`,
   youTubeThumbnail: {
     default: (key: string) => `https://img.youtube.com/vi/${key}/default.jpg`,
@@ -33,6 +35,7 @@ export interface MovieDB {
   movie: (id: string) => string;
   movieVideo: (movieId: string) => string;
   tvVideo: (movieId: string) => string;
+  mediaFullInfo: (media: 'tv' | 'movie', key: string) => string;
   youTube: KeyFunction;
   youTubeThumbnail: {
     default: KeyFunction;
