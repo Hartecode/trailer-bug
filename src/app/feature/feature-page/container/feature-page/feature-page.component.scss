@@ -96,13 +96,30 @@ main {
 }
 
 .closing-container {
-    padding: 1rem;
-    
+    padding: 1rem 0;
+
     h2 {
+        padding: 0 1rem;
         margin-bottom: 0.5rem;
     }
 
     h2:last-of-type {
         margin-top: 1rem;
+    }
+    
+    p {
+        padding: 0 1rem;
+    }
+
+}
+
+
+.video-list {
+    display: flex;
+    flex-wrap: wrap;
+
+    app-video-thumbnail {
+        flex: 1 0 43%;
+        padding: 1rem;
     }
 }
