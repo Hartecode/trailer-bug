@@ -9,5 +9,9 @@ export const sharedSchema: NgModule = {
   exports: [LazyLoadDirective]
 };
 
-@NgModule(sharedSchema)
+@NgModule({
+  declarations: [ButtonComponent, LazyLoadDirective],
+  imports: [CommonModule],
+  exports: [LazyLoadDirective]
+})
 export class SharedModule {}

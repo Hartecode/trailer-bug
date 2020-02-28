@@ -10,5 +10,9 @@ export const cardSchema: NgModule = {
   exports: [CardComponent]
 };
 
-@NgModule(cardSchema)
+@NgModule({
+  declarations: [CardComponent],
+  imports: [CommonModule, MatIconModule, SharedModule],
+  exports: [CardComponent]
+})
 export class CardModule {}
