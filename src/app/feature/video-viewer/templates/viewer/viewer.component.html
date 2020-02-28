@@ -20,7 +20,7 @@
   
       <h2 class="title">{{mainVideo.title}}</h2>
   
-      <button class="close-btn" (click)="closeViewer()">
+      <button class="close-btn" [attr.aria-label]="'close'" (click)="closeViewer()">
         <mat-icon>
           <i>close</i>
         </mat-icon>
