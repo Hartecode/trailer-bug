@@ -3,11 +3,18 @@ $play-icon-size: 5rem;
 :host {
     background-color: rgb(63, 63, 63);
     display: block;
-    padding: 0 1rem;
+    position: relative;
 }
 
 main {
-    background-color: rgba(255, 255, 255, 0.85);;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 0 1rem;
+}
+
+.main-container {
+    background-color: rgba(255, 255, 255, 0.85);
     margin: auto;
     max-width: 56.25rem; //900px
     min-height: 85vh;

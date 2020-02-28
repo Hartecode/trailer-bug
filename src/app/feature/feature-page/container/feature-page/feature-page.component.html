@@ -1,48 +1,53 @@
-<main *ngIf="(data$ | async) as data">
-    <section class="detail-container">
-        <div class="container-poster">
-            <img [src]="data.poster" alt="data.title"> 
-        </div>
-        <div class="detail">
-            <h1>{{data.title}}</h1>
-            <h3>Genre(s):</h3>
-            <ul>
-                <li *ngFor="let item of data.genres">{{item}}</li>
-            </ul>
-            <h3>Created by:</h3>
-            <ul>
-                <li *ngFor="let item of data.createdBy">{{item}}</li>
-            </ul>
-        </div>
+<main 
+    *ngIf="(data$ | async) as data"
+    [ngStyle]="{background: 'url(' + data.backdrop + ')'}">
+    <section class="main-container">
+        <section class="detail-container">
+            <div class="container-poster">
+                <img [src]="data.poster" alt="data.title"> 
+            </div>
+            <div class="detail">
+                <h1>{{data.title}}</h1>
+                <h3>Genre(s):</h3>
+                <ul>
+                    <li *ngFor="let item of data.genres">{{item}}</li>
+                </ul>
+                <h3>Created by:</h3>
+                <ul>
+                    <li *ngFor="let item of data.createdBy">{{item}}</li>
+                </ul>
+            </div>
+        </section>
+        <section *ngIf="data.videos?.length > 0" class="video-banner">
+            <img [src]="data.poster" [alt]="data.title">
+            <button class="icon-btn">
+                <mat-icon>
+                    <i>play_circle_outline</i>
+                </mat-icon>
+            </button>
+            <button (click)="scrollToVideos()" class="video-num-btn">
+                Trailers: {{data.videos?.length}}
+            </button>
+        </section>
+        <section class="closing-container">
+            <h2>Description:</h2>
+            <p>{{data.desc}}</p>
+            <h2>Trailers:</h2>
+            <div #videoList *ngIf="data.videos.length > 0; else sorryMessage" class="video-list">
+                <app-video-thumbnail
+                    *ngFor="let video of data.videos; let i = index"
+                    [thumbnail]="{
+                        index: i,
+                        title: video.title,
+                        images: video.images
+                    }">
+                </app-video-thumbnail>   
+            </div>
+            <ng-template #sorryMessage>
+                <p>Sorry, there are no trailers</p>
+            </ng-template>
+        </section>
+    
     </section>
-    <section *ngIf="data.videos?.length > 0" class="video-banner">
-        <img [src]="data.poster" [alt]="data.title">
-        <button class="icon-btn">
-            <mat-icon>
-                <i>play_circle_outline</i>
-            </mat-icon>
-        </button>
-        <button (click)="scrollToVideos()" class="video-num-btn">
-            Trailers: {{data.videos?.length}}
-        </button>
-    </section>
-    <section class="closing-container">
-        <h2>Description:</h2>
-        <p>{{data.desc}}</p>
-        <h2>Trailers:</h2>
-        <div #videoList *ngIf="data.videos.length > 0; else sorryMessage" class="video-list">
-            <app-video-thumbnail
-                *ngFor="let video of data.videos; let i = index"
-                [thumbnail]="{
-                    index: i,
-                    title: video.title,
-                    images: video.images
-                }">
-            </app-video-thumbnail>   
-        </div>
-        <ng-template #sorryMessage>
-            <p>Sorry, there are no trailers</p>
-        </ng-template>
-    </section>
-
 </main>
+
