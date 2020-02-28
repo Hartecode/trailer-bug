@@ -13,20 +13,22 @@ import { Card } from '../../../shared/layout/card/card.component';
 })
 export class LandingService {
   private currentDate = new Date();
-  private currentYear = this.currentDate.getFullYear();
-  private currentMonth = this.currentDate.getMonth();
-  private currentDay = this.currentDate.getDay();
+  // private currentYear = this.currentDate.getFullYear();
+  // private currentMonth = this.currentDate.getMonth();
+  // private currentDay = this.currentDate.getDay();
   private monthAgoDate = new Date(
     this.currentDate.setMonth(this.currentDate.getMonth() - 1)
   );
-  private lastMonthYear = this.monthAgoDate.getFullYear();
-  private lastMonth = this.monthAgoDate.getMonth();
-  private lastMonthDay = this.monthAgoDate.getDay();
+  // private lastMonthYear = this.monthAgoDate.getFullYear();
+  // private lastMonth = this.monthAgoDate.getMonth();
+  // private lastMonthDay = this.monthAgoDate.getDay();
   private movieApiConfig: MovieDB = this.movieDBService.apiConfig;
   private discoverMovieApi: string = `${this.movieApiConfig.discover()}/movie?sort_by=popularity.desc`;
 
   private discoverTVApi: string = `${this.movieApiConfig.discover()}/tv?language=en-US&sort_by=popularity.desc`;
   private trendingOfDay: string = `${this.movieApiConfig.trending()}/all/day`;
+  private maxTvMovieLength: number = 15;
+  private dailyFeaturesLength: number = 6;
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -74,7 +76,7 @@ export class LandingService {
                 type: 'movie' as 'movie'
               };
             })
-            .slice(0, 12);
+            .slice(0, this.maxTvMovieLength);
         })
       );
   }
@@ -97,7 +99,7 @@ export class LandingService {
               releaseDate: val.first_air_date,
               type: 'tv' as 'tv'
             }))
-            .slice(0, 12);
+            .slice(0, this.maxTvMovieLength);
         })
       );
   }
@@ -116,7 +118,7 @@ export class LandingService {
                 title: val.title
               };
             })
-            .slice(0, 6);
+            .slice(0, this.dailyFeaturesLength);
         })
       );
   }

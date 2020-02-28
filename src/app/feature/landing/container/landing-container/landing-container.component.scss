@@ -1,4 +1,9 @@
+@import '../../../../style-themes/themes.scss';
+
 :host {
-    display: blocks;
+    background-color: $main-background-color;
+    box-sizing: border-box;
+    display: block;
+    padding: 0 $spacing-200;
     width: 100%;
 }
