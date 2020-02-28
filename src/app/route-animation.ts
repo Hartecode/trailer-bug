@@ -89,7 +89,7 @@ export const slideInAnimation = trigger('routeAnimations', [
     ]),
     query(':enter', animateChild())
   ]),
-  transition('* <=> FilterPage', [
+  transition('* <=> *', [
     style({ position: 'relative' }),
     query(':enter, :leave', [
       style({

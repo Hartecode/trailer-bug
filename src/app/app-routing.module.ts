@@ -5,8 +5,7 @@ const routes: Routes = [
   {
     path: 'search',
     loadChildren: () =>
-      import('./feature/search/search.module').then(mod => mod.SearchModule),
-    data: { animation: 'FilterPage' }
+      import('./feature/search/search.module').then(mod => mod.SearchModule)
   },
   {
     path: 'tv',
@@ -14,7 +13,7 @@ const routes: Routes = [
       import('./feature/feature-page/feature-page.module').then(
         mod => mod.FeaturePageModule
       ),
-    data: { animation: 'FilterPage' }
+    data: { animation: 'MediaPage' }
   },
   {
     path: 'movie',
@@ -22,7 +21,7 @@ const routes: Routes = [
       import('./feature/feature-page/feature-page.module').then(
         mod => mod.FeaturePageModule
       ),
-    data: { animation: 'FilterPage' }
+    data: { animation: 'MediaPage' }
   },
   {
     path: '',

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { LazyLoaderService } from 'src/app/module-injecter/services/lazy-loader/lazy-loader.service';
