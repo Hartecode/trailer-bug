@@ -12,7 +12,7 @@
   </mat-drawer>
   <main>
     <header>
-      <button [attr.aria-label]="'video list'" (click)="drawer.toggle()">
+      <button  class="drawer-btn" [attr.aria-label]="'video list'" (click)="drawer.toggle()">
         <mat-icon>
           <i>list</i>
         </mat-icon>
@@ -20,8 +20,10 @@
   
       <h2 class="title">{{mainVideo.title}}</h2>
   
-      <button (click)="closeViewer()">
-        close
+      <button class="close-btn" (click)="closeViewer()">
+        <mat-icon>
+          <i>close</i>
+        </mat-icon>
       </button>
     </header> 
     <section>
@@ -40,6 +42,8 @@
         </div>
       </div>
     </section>
+    <footer></footer>
+
   </main>
 
 </mat-drawer-container>
