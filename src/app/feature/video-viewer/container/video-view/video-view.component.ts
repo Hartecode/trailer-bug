@@ -23,6 +23,7 @@ import { VideoItem } from '../../templates/viewer/viewer.component';
 })
 export class VideoViewComponent implements OnInit {
   @Input() data: { id: string; type: 'movie' | 'tv' };
+  @Input() selectedOption: number = 0;
 
   @Output() close = new EventEmitter<void>();
 

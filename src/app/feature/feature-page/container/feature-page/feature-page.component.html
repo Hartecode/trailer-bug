@@ -1,6 +1,6 @@
 <main 
     *ngIf="(data$ | async) as data"
-    [ngStyle]="{background: 'url(' + data.backdrop + ')'}">
+    [ngStyle]="{background: 'fixed no-repeat center/cover url(' + data.backdrop + ')'}">
     <section class="main-container">
         <section class="detail-container">
             <div class="container-poster">
@@ -20,7 +20,7 @@
         </section>
         <section *ngIf="data.videos?.length > 0" class="video-banner">
             <img [src]="data.poster" [alt]="data.title">
-            <button class="icon-btn">
+            <button class="icon-btn" (click)="openModel({id: data.id, media: data.type})">
                 <mat-icon>
                     <i>play_circle_outline</i>
                 </mat-icon>
@@ -36,6 +36,7 @@
             <div #videoList *ngIf="data.videos.length > 0; else sorryMessage" class="video-list">
                 <app-video-thumbnail
                     *ngFor="let video of data.videos; let i = index"
+                    (selected)="openModel({id: data.id, media: data.type}, $event)"
                     [thumbnail]="{
                         index: i,
                         title: video.title,

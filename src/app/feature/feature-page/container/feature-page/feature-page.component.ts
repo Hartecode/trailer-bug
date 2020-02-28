@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { combineLatest, Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { VideoItem } from 'src/app/feature/video-viewer/templates/viewer/viewer.component';
+import { LazyLoaderService } from 'src/app/module-injecter/services/lazy-loader/lazy-loader.service';
 import { FeaturePageService } from '../../service/feature-page.service';
 
 @Component({
@@ -32,11 +33,38 @@ export class FeaturePageComponent {
 
   constructor(
     private route: ActivatedRoute,
+    private loader: LazyLoaderService,
     private featureService: FeaturePageService
   ) {}
 
   public scrollToVideos(): void {
     this.videosRef.nativeElement.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  public openModel(
+    e: { id: string; media: string },
+    selected: number = 0
+  ): void {
+    this.loader.load(
+      'video-viewer',
+      'appContainer',
+      [
+        {
+          input: 'data',
+          data: { id: e.id, type: e.media }
+        },
+        {
+          input: 'selectedOption',
+          data: selected
+        }
+      ],
+      [
+        {
+          output: 'close',
+          method: () => this.loader.removeComponent('appContainer')
+        }
+      ]
+    );
   }
 }
 
