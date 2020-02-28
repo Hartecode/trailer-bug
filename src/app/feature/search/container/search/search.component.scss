@@ -1,36 +1,42 @@
+@import '../../../../style-themes/themes.scss';
+
 :host {
+    background-color: $main-background-color;
     display: block;
-    min-height: 80vh;
+    min-height: $min-layout-height;
 }
 
 .main-results {
-    max-width: 88rem;
+    background-color: $page-background-color;
+    max-width: $min-layout-width-200;
     margin: auto;
-    padding: 0 1.5rem;
+    padding: 0 $spacing-300;
 }
 
 .container {
     display: grid;
-    grid-gap: 1rem 0.5rem;
+    grid-gap: $spacing-200 $spacing-100;
     grid-template-columns: repeat(auto-fit, minmax(9.875rem, 1fr));
     justify-content: center;
 }
 
 .main-no-results {
-    margin: 2rem auto;
+    height: 100%;
+    padding: $spacing-400 0;
+    margin: 0 auto;
     max-width: 40.5rem;
 
     .no-results {
         background-color: rgb(116, 116, 116);
         color: rgb(255, 255, 255);
-        font-size: 1.5rem;
-        padding: 2rem 1rem;
+        font-size: $spacing-300;
+        padding: $spacing-400 $spacing-200;
         text-align: center;
-        margin: 0 1.5rem;
+        margin: 0 $spacing-300;
     }
 
     p {
-        line-height: 1.5rem;
+        line-height: $spacing-300;
     }
 
 }
