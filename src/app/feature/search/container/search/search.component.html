@@ -13,6 +13,7 @@
       <app-card 
         *ngFor="let data of res.results"
         [data]="data"
+        (showPage)="navigateToPage($event)"
         (showVideo)="openModel($event)">
       </app-card>
     </section>
