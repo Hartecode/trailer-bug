@@ -32,14 +32,21 @@ export class FeaturePageService {
     id: string
   ): Observable<MediaInfo> {
     return this.http
-      .get<ServiceTVDetails>(this.mediaInfoURL(media, id), this.httpOptions)
+      .get<ServiceTVDetails | ServiceMovieDetails>(
+        this.mediaInfoURL(media, id),
+        this.httpOptions
+      )
       .pipe(
         map(res => {
           // console.log(res);
           return {
-            title: res.name,
+            title:
+              (res as ServiceTVDetails).name ||
+              (res as ServiceMovieDetails).title,
             genres: res.genres.map(val => val.name),
-            createdBy: res.created_by.map(val => val.name),
+            createdBy: !!(res as ServiceTVDetails).created_by
+              ? (res as ServiceTVDetails).created_by.map(val => val.name)
+              : undefined,
             desc: res.overview,
             poster: res.poster_path
               ? this.movieApiConfig.image(200, res.poster_path)
@@ -79,7 +86,7 @@ export class FeaturePageService {
 interface MediaInfo {
   title: string;
   genres: string[];
-  createdBy: string[];
+  createdBy?: string[];
   desc: string;
   poster: string;
   backdrop: string;
@@ -150,6 +157,48 @@ interface ServiceTVDetails {
   }[];
   status: string;
   type: string;
+  vote_average: number;
+  vote_count: number;
+}
+
+interface ServiceMovieDetails {
+  adult: boolean;
+  backdrop_path: string;
+  belongs_to_collection: null;
+  budget: number;
+  genres: {
+    id: number;
+    name: string;
+  }[];
+  homepage: string;
+  id: number;
+  imdb_id: string;
+  original_language: string;
+  original_title: string;
+  overview: string;
+  popularity: number;
+  poster_path: null | string;
+  production_companies: {
+    id: number;
+    logo_path: string;
+    name: string;
+    origin_country: string;
+  }[];
+  production_countries: {
+    iso_3166_1: string;
+    name: string;
+  }[];
+  release_date: string;
+  revenue: number;
+  runtime: number;
+  spoken_languages: {
+    iso_639_1: string;
+    name: string;
+  }[];
+  status: string;
+  tagline: string;
+  title: string;
+  video: false;
   vote_average: number;
   vote_count: number;
 }

@@ -12,10 +12,12 @@
                 <ul>
                     <li *ngFor="let item of data.genres">{{item}}</li>
                 </ul>
-                <h3>Created by:</h3>
-                <ul>
-                    <li *ngFor="let item of data.createdBy">{{item}}</li>
-                </ul>
+                <ng-container *ngIf="data.createdBy">
+                    <h3>Created by:</h3>
+                    <ul>
+                        <li *ngFor="let item of data.createdBy">{{item}}</li>
+                    </ul>
+                </ng-container>
             </div>
         </section>
         <section *ngIf="data.videos?.length > 0" class="video-banner">

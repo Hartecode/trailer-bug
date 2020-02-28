@@ -75,7 +75,7 @@ export interface FeaturePageData {
   backdrop: string;
   title: string;
   genres: string[];
-  createdBy: string[];
+  createdBy?: string[];
   desc: string;
   videos: VideoItem[];
 }
