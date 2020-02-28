@@ -1,6 +1,6 @@
 <figure *ngIf="data" class="card-container">
   <div class="img-container">
-    <img class="image"[src]="data.image.src" [alt]="data.image.alt">
+    <img appLazyLoad class="image" [src]="data.image.src" [alt]="data.image.alt">
   </div>
   <div class="overlay">
     <button class="play" (click)="onTriggerVideo()">
