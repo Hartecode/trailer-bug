@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { combineLatest, Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
@@ -11,6 +11,8 @@ import { FeaturePageService } from '../../service/feature-page.service';
   styleUrls: ['./feature-page.component.scss']
 })
 export class FeaturePageComponent {
+  @ViewChild('videoList') videosRef: ElementRef;
+
   public data$: Observable<FeaturePageData> = combineLatest([
     this.route.parent.url,
     this.route.paramMap
@@ -33,7 +35,9 @@ export class FeaturePageComponent {
     private featureService: FeaturePageService
   ) {}
 
-  public;
+  public scrollToVideos(): void {
+    this.videosRef.nativeElement.scrollIntoView({ behavior: 'smooth' });
+  }
 }
 
 export interface FeaturePageData {

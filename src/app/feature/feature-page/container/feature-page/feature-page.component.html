@@ -22,7 +22,7 @@
                 <i>play_circle_outline</i>
             </mat-icon>
         </button>
-        <button class="video-num-btn">
+        <button (click)="scrollToVideos()" class="video-num-btn">
             Trailers: {{data.videos?.length}}
         </button>
     </section>
@@ -30,7 +30,7 @@
         <h2>Description:</h2>
         <p>{{data.desc}}</p>
         <h2>Trailers:</h2>
-        <div  *ngIf="data.videos.length > 0; else sorryMessage" class="video-list">
+        <div #videoList *ngIf="data.videos.length > 0; else sorryMessage" class="video-list">
             <app-video-thumbnail
                 *ngFor="let video of data.videos; let i = index"
                 [thumbnail]="{
