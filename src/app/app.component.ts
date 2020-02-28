@@ -7,11 +7,16 @@ import {
 import { Router } from '@angular/router';
 import { GeneralSearchService } from './feature/search/services/general-search/general-search.service';
 import { LazyLoaderService } from './module-injecter/services/lazy-loader/lazy-loader.service';
+import { slideInAnimation } from './route-animation';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  animations: [
+    slideInAnimation
+    // animation triggers go here
+  ]
 })
 export class AppComponent implements AfterViewInit {
   public title = 'Trailer Bug';
@@ -42,5 +47,11 @@ export class AppComponent implements AfterViewInit {
 
   public updateSearch(val: string): void {
     this.searchService.updateSearch(val);
+  }
+
+  public prepareRoute(outlet) {
+    return (
+      outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation
+    );
   }
 }
