@@ -1,12 +1,14 @@
 @import '../../../../../style-themes/themes.scss';
 
 $nav-icon-size: $font-size-600;
+$radius-size: 1.5625rem; // 25px
+$padding-size: 0.9375rem; //15px
 
 :host {
     background-color: $title-color-100;
-    border-bottom: 2px solid $theme-color-200;
+    border-bottom: $spacing-40 solid $theme-color-200;
     display: block;
-    padding: $spacing-200;
+    padding: $spacing-200 $spacing-200 $spacing-100 $spacing-200;
 }
 
 header {
@@ -15,9 +17,7 @@ header {
 }
 
 nav {
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
+    padding-bottom: $spacing-100;
 }
 
 .logo {
@@ -45,4 +45,28 @@ nav {
     font-size: $nav-icon-size;
     height: $nav-icon-size;
     width: $nav-icon-size;
+}
+
+form {
+    align-content: center;
+    display: flex;
+
+    input {
+        background-color: $white;
+        box-sizing: border-box;
+        border-radius: $radius-size 0 0 $radius-size;
+        padding-left: $padding-size;
+        border: none;
+        font-size: $font-size-500;
+        flex: 1;
+        height: $font-size-600;
+        width: 100%;
+    }
+
+    button {
+        background-color: $white;
+        border: none;
+        border-radius: 0 $radius-size $radius-size 0;
+        height: $font-size-600;
+    }
 }
