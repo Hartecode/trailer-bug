@@ -1,9 +1,14 @@
+@import './style-themes/themes.scss';
 
 :host {
-    background-color: rgb(73, 73, 73);
     position: relative;
 }
 
 h2 {
     font-size: 20px;
+}
+
+main {
+    background-color: $main-background-color;
+    min-height: $min-layout-height;
 }

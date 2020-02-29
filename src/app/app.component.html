@@ -13,10 +13,12 @@
       <button (click)="goToSearch(searchValue)">search</button>
   </form>
 </header>
-<div [@routeAnimations]="prepareRoute(outlet)" >
-  <router-outlet #outlet="outlet"></router-outlet>
-</div>
-<ng-template #container></ng-template>
+<main>
+  <div [@routeAnimations]="prepareRoute(outlet)" >
+    <router-outlet #outlet="outlet"></router-outlet>
+  </div>
+  <ng-template #container></ng-template>
+</main>
 <footer>
   <app-footer-container></app-footer-container>
 </footer>
