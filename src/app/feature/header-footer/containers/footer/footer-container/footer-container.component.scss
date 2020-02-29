@@ -1,0 +1,18 @@
+@import '../../../../../style-themes/themes.scss';
+
+:host {
+    background-color: rgb(48, 48, 48);
+    color: $white;
+    display: block;
+    height: $spacing-1500;
+    padding: $spacing-200;
+}
+
+a {
+    color: $white;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    } 
+}
