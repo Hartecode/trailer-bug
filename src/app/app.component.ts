@@ -17,7 +17,6 @@ import { slideInAnimation } from './route-animation';
   ]
 })
 export class AppComponent implements AfterViewInit {
-  public title = 'Trailer Bug';
   public searchValue: string = '';
 
   @ViewChild('container', { read: ViewContainerRef })
