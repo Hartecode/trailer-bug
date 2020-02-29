@@ -1,17 +1,5 @@
 <header>
-  <h1>
-    <a [routerLink]="['']">{{title}}</a></h1>
-  <form>
-    <label for="search">Search:</label>
-    <input 
-      (keyup)="updateSearch(searchValue)"
-      [(ngModel)]="searchValue"
-      type="text"
-      id="search"
-      name="search"
-      #search="ngModel"> 
-      <button (click)="goToSearch(searchValue)">search</button>
-  </form>
+  <app-header-container></app-header-container>
 </header>
 <main>
   <div [@routeAnimations]="prepareRoute(outlet)" >

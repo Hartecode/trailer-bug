@@ -4,8 +4,6 @@ import {
   ViewChild,
   ViewContainerRef
 } from '@angular/core';
-import { Router } from '@angular/router';
-import { GeneralSearchService } from './feature/search/services/general-search/general-search.service';
 import { LazyLoaderService } from './module-injecter/services/lazy-loader/lazy-loader.service';
 import { slideInAnimation } from './route-animation';
 
@@ -25,11 +23,7 @@ export class AppComponent implements AfterViewInit {
   @ViewChild('container', { read: ViewContainerRef })
   container: ViewContainerRef;
 
-  constructor(
-    private router: Router,
-    private loader: LazyLoaderService,
-    private searchService: GeneralSearchService
-  ) {}
+  constructor(private loader: LazyLoaderService) {}
 
   ngAfterViewInit() {
     // Need to register the dynamic region so it can be used throughout the app
@@ -37,16 +31,6 @@ export class AppComponent implements AfterViewInit {
       ref: this.container,
       key: 'appContainer'
     });
-  }
-
-  public goToSearch(val: string): void {
-    if (val) {
-      this.router.navigate(['/', 'search']);
-    }
-  }
-
-  public updateSearch(val: string): void {
-    this.searchService.updateSearch(val);
   }
 
   public prepareRoute(outlet) {
