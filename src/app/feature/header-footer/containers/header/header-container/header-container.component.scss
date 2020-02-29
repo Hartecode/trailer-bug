@@ -1,0 +1,48 @@
+@import '../../../../../style-themes/themes.scss';
+
+$nav-icon-size: $font-size-600;
+
+:host {
+    background-color: $title-color-100;
+    border-bottom: 2px solid $theme-color-200;
+    display: block;
+    padding: $spacing-200;
+}
+
+header {
+    margin: auto;
+    max-width: $min-layout-width-300;
+}
+
+nav {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo {
+    color: $white;
+    display: flex;
+    font-size: $font-size-500;
+    text-decoration: none;
+}
+
+.icon-btn {
+    border: none;
+    background: $white-t;
+    padding: $spacing-50;
+    text-decoration: none;
+
+    &:active {
+        .nav-icon {
+            color: $theme-color-300;
+        }
+    }
+}
+
+.nav-icon {
+    color: $theme-color-200;
+    font-size: $nav-icon-size;
+    height: $nav-icon-size;
+    width: $nav-icon-size;
+}

@@ -1,0 +1,38 @@
+<header>
+    <nav>
+        <a class="logo" [routerLink]="['']">
+            Trailer
+            <mat-icon class="nav-icon" label="bug">
+                <i>bug_report</i>
+            </mat-icon>
+            Bug
+        </a>
+        <div class="icon-list">
+            <a  [routerLink]="['']" class="icon-btn">
+                <mat-icon class="nav-icon" label="home">
+                    <i>home</i>
+                </mat-icon>
+            </a>
+            <button class="icon-btn">
+                <mat-icon class="nav-icon" label="search">
+                    <i>search</i>
+                </mat-icon>
+            </button>
+        </div>
+    </nav>
+    <form>
+        <label for="search">Search:</label>
+        <input 
+        (keyup)="updateSearch(searchValue)"
+        [(ngModel)]="searchValue"
+        type="text"
+        id="search"
+        name="search"
+        #search="ngModel"> 
+        <button (click)="goToSearch(searchValue)">
+            <mat-icon label="home">
+                <i>search</i>
+            </mat-icon>
+        </button>
+    </form>    
+</header>
