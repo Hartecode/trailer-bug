@@ -8,12 +8,13 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FooterContainerComponent } from './feature/header-footer/containers/footer/footer-container/footer-container.component';
 import { LazyLoaderService } from './module-injecter/services/lazy-loader/lazy-loader.service';
 import { LAZY_WIDGETS } from './module-injecter/utils/tokens';
 import { lazyArrayToObj, lazyWidgets } from './module-injecter/utils/widgets';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, FooterContainerComponent],
   imports: [
     BrowserModule,
     FormsModule,
