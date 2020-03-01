@@ -8,6 +8,7 @@ describe('LandingService', () => {
   );
 
   it('should be created', () => {
+    // tslint:disable-next-line: deprecation
     const service: LandingService = TestBed.get(LandingService);
     expect(service).toBeTruthy();
   });

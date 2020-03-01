@@ -12,13 +12,13 @@ import { Card } from '../../../shared/layout/card/card.component';
   providedIn: 'root'
 })
 export class LandingService {
-  private currentDate = new Date();
+  // private currentDate = new Date();
   // private currentYear = this.currentDate.getFullYear();
   // private currentMonth = this.currentDate.getMonth();
   // private currentDay = this.currentDate.getDay();
-  private monthAgoDate = new Date(
-    this.currentDate.setMonth(this.currentDate.getMonth() - 1)
-  );
+  // private monthAgoDate = new Date(
+  //   this.currentDate.setMonth(this.currentDate.getMonth() - 1)
+  // );
   // private lastMonthYear = this.monthAgoDate.getFullYear();
   // private lastMonth = this.monthAgoDate.getMonth();
   // private lastMonthDay = this.monthAgoDate.getDay();

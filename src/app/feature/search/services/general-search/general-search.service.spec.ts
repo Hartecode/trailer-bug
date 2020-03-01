@@ -13,6 +13,7 @@ describe('GeneralSearchService', () => {
   beforeEach(() => TestBed.configureTestingModule(schema));
 
   it('should be created', () => {
+    // tslint:disable-next-line: deprecation
     const service: GeneralSearchService = TestBed.get(GeneralSearchService);
     expect(service).toBeTruthy();
   });

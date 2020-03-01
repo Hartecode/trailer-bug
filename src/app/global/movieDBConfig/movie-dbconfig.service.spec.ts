@@ -6,6 +6,7 @@ describe('MovieDBConfigService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
+    // tslint:disable-next-line: deprecation
     const service: MovieDBConfigService = TestBed.get(MovieDBConfigService);
     expect(service).toBeTruthy();
   });

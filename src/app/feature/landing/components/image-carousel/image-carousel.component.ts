@@ -13,7 +13,7 @@ export class ImageCarouselComponent implements OnInit {
   @Input() selectedImage: number = 0;
   @Input() intervalTime: number = 5000;
 
-  private timerId: NodeJS.Timer;
+  private timerId;
 
   ngOnInit() {
     if (this.images) {
@@ -38,7 +38,7 @@ export class ImageCarouselComponent implements OnInit {
     this.timerId = this.startImageInterval();
   }
 
-  private startImageInterval(): NodeJS.Timer {
+  private startImageInterval() {
     return setInterval(() => this.moveForward(), this.intervalTime);
   }
 

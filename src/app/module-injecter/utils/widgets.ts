@@ -1,6 +1,3 @@
-import { NgModuleFactory, Type } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-
 export const lazyWidgets = [
   {
     path: 'video-viewer',

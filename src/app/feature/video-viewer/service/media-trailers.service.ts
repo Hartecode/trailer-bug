@@ -24,10 +24,7 @@ export class MediaTrailersService {
       Authorization: `Bearer ${this.movieApiConfig.accessToken}`
     })
   };
-  private videoType = {
-    YouTube: 'youTube',
-    Vimeo: 'vimoe'
-  };
+
   constructor(
     private movieDBService: MovieDBConfigService,
     private http: HttpClient
