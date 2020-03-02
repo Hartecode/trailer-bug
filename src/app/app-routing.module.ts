@@ -3,6 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
+    path: '',
+    loadChildren: () =>
+      import('./feature/landing/landing.module').then(mod => mod.LandingModule),
+    data: { animation: 'Home' },
+    pathMatch: 'full'
+  },
+  {
     path: 'search',
     loadChildren: () =>
       import('./feature/search/search.module').then(mod => mod.SearchModule)
@@ -22,12 +29,6 @@ const routes: Routes = [
         mod => mod.FeaturePageModule
       ),
     data: { animation: 'MediaPage' }
-  },
-  {
-    path: '',
-    loadChildren: () =>
-      import('./feature/landing/landing.module').then(mod => mod.LandingModule),
-    data: { animation: 'Home' }
   }
 ];
 
