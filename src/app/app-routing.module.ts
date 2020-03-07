@@ -6,13 +6,14 @@ const routes: Routes = [
     path: '',
     loadChildren: () =>
       import('./feature/landing/landing.module').then(mod => mod.LandingModule),
-    data: { animation: 'Home' },
+    data: { animation: 'HomePage' },
     pathMatch: 'full'
   },
   {
     path: 'search',
     loadChildren: () =>
-      import('./feature/search/search.module').then(mod => mod.SearchModule)
+      import('./feature/search/search.module').then(mod => mod.SearchModule),
+    data: { animation: 'SearchPage' }
   },
   {
     path: 'tv',
