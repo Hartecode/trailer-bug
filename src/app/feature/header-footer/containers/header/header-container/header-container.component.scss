@@ -59,9 +59,9 @@ form {
         padding-left: $padding-size;
         border: none;
         font-size: $font-size-500;
-        flex: 1;
+        flex: 1 auto;
         height: $font-size-600;
-        width: 100%;
+        width: 0;
     }
 
     button {
