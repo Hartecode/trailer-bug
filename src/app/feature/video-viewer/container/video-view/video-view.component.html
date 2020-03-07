@@ -1,8 +1,15 @@
-<!-- // TODO: ADD ERROR PAGE -->
-<app-viewer 
-    *ngIf="trailers && !hide"
-    [@enterAnimation]
-    [videoList]="trailers"
-    [selectOption]="selectedOption"
-    (close)="onClose()">
-</app-viewer>
+<ng-container *ngIf="trailers">
+    <app-viewer 
+        *ngIf="trailers.length > 0 && !hide; else noResults"
+        [@enterAnimation]
+        [videoList]="trailers"
+        [selectOption]="selectedOption"
+        (close)="onClose()">
+    </app-viewer>
+    <ng-template #noResults>
+        <app-no-results-model
+            (click)="onClose()"
+            [name]="data.type">
+        </app-no-results-model>
+    </ng-template>
+</ng-container>

@@ -1,5 +1,13 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output
+} from '@angular/core';
+import { Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { MediaTrailersService } from '../../service/media-trailers.service';
 import { VideoItem } from '../../templates/viewer/viewer.component';
@@ -21,27 +29,33 @@ import { VideoItem } from '../../templates/viewer/viewer.component';
     ])
   ]
 })
-export class VideoViewComponent implements OnInit {
+export class VideoViewComponent implements OnInit, OnDestroy {
   @Input() data: { id: string; type: 'movie' | 'tv' };
   @Input() selectedOption: number = 0;
 
   @Output() close = new EventEmitter<void>();
 
-  public trailers: VideoItem[];
+  public trailers?: VideoItem[];
   public hide: boolean = false;
-
+  private subscriptions: Subscription[] = [];
   constructor(private trailerService: MediaTrailersService) {}
 
   ngOnInit() {
-    this.trailerService
-      .getMediaVideos(this.data.id, this.data.type)
-      .pipe(
-        // tslint:disable-next-line: no-shadowed-variable
-        tap(val => {
-          this.trailers = val;
-        })
-      )
-      .subscribe();
+    this.subscriptions.push(
+      this.trailerService
+        .getMediaVideos(this.data.id, this.data.type)
+        .pipe(
+          // tslint:disable-next-line: no-shadowed-variable
+          tap(val => {
+            this.trailers = val;
+          })
+        )
+        .subscribe()
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(v => v.unsubscribe());
   }
 
   public onClose() {
