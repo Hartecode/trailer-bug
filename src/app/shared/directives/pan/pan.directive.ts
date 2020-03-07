@@ -67,12 +67,12 @@ export class PanDirective implements OnInit, OnDestroy {
   }
 
   private extractXaxis = (ev: MouseEvent | TouchEvent): number =>
-    (<MouseEvent>ev).clientX !== undefined
-      ? (<MouseEvent>ev).clientX
+    (ev as MouseEvent).clientX !== undefined
+      ? (ev as MouseEvent).clientX
       : (ev as TouchEvent).touches[0].clientX;
   private extractYaxis = (ev: MouseEvent | TouchEvent): number =>
-    (<MouseEvent>ev).clientY !== undefined
-      ? (<MouseEvent>ev).clientY
+    (ev as MouseEvent).clientY !== undefined
+      ? (ev as MouseEvent).clientY
       : (ev as TouchEvent).touches[0].clientY;
 
   public ngOnInit() {
