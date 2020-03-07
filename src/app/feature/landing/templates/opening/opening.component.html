@@ -1,4 +1,7 @@
-<app-image-carousel [images]="featuredPosters"></app-image-carousel>
+<app-image-carousel
+  (showPage)="goToPage($event)"
+  [images]="featuredPosters">
+</app-image-carousel>
 
 <section>
   <h3 class='title'>Popular Movies Trailers</h3>

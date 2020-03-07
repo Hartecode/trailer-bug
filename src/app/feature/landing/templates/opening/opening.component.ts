@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Image } from '../../../../global/models/global-models';
 import { Card, ShowVideo } from '../../../../shared/layout/card/card.component';
+import { CarouselImage } from '../../components/image-carousel/image-carousel.component';
 
 @Component({
   selector: 'app-opening',
@@ -8,7 +8,7 @@ import { Card, ShowVideo } from '../../../../shared/layout/card/card.component';
   styleUrls: ['./opening.component.scss']
 })
 export class OpeningComponent {
-  @Input() featuredPosters: Image[];
+  @Input() featuredPosters: CarouselImage[];
   @Input() popularMovies: Card[];
   @Input() popularTV: Card[];
 

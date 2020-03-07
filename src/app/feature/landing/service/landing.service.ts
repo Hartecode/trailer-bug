@@ -7,6 +7,7 @@ import { MovieDB } from '../../../../config/config';
 import { Image } from '../../../global/models/global-models';
 import { MovieDBConfigService } from '../../../global/movieDBConfig/movie-dbconfig.service';
 import { Card } from '../../../shared/layout/card/card.component';
+import { CarouselImage } from '../components/image-carousel/image-carousel.component';
 
 @Injectable({
   providedIn: 'root'
@@ -104,7 +105,7 @@ export class LandingService {
       );
   }
 
-  public getDailyFeatures(): Observable<Array<Image>> {
+  public getDailyFeatures(): Observable<CarouselImage[]> {
     return this.http
       .get<TrendingResponse>(this.trendingOfDay, this.httpOptions)
       .pipe(
@@ -113,6 +114,8 @@ export class LandingService {
             .filter(val => val.backdrop_path)
             .map(val => {
               return {
+                id: val.id,
+                type: 'movie' as 'movie',
                 src: `${this.movieApiConfig.fullImage(val.backdrop_path)}`,
                 alt: val.original_title,
                 title: val.title
