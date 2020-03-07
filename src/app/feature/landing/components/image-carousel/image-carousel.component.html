@@ -13,10 +13,11 @@
     <ng-container *ngFor="let img of images; let i = index">
       <li 
         *ngIf="selectedImage === i"
+        agPan
         (click)="onTriggerPage(img.id, img.type)"
         class="slide"
-        (swiperight)="onBack()"
-        (swipeleft)="onForward()">
+        (sagPanRight)="onBack()"
+        (agPanLef)="onForward()">
         <div class="img-container">
           <img [src]="img.src" [alt]="img.alt" [title]="img.title" />
         </div>
