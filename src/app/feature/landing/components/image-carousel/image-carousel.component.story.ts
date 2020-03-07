@@ -1,4 +1,5 @@
 import { withA11y } from '@storybook/addon-a11y';
+import { action } from '@storybook/addon-actions';
 import { moduleMetadata, storiesOf } from '@storybook/angular';
 import { standardStorybookSchema } from '../../../../utils/storybook';
 import { ImageCarouselComponent } from './image-carousel.component';
@@ -18,8 +19,10 @@ export const imageCodes = [
 
 export const imageArray = (imgArr: string[], fuc: (c: string) => string) =>
   imgArr.map((val, i) => ({
+    id: 323 + i,
+    type: 'tv',
     src: fuc(val),
-    alt: `panda ${i + 1}`,
+    alt: `panda img ${i + 1}`,
     title: `Panda ${i + 1}`
   }));
 
@@ -29,6 +32,7 @@ storiesOf('Image Carousel', module)
   .add('sample', () => ({
     component: ImageCarouselComponent,
     props: {
-      images: imageArray(imageCodes, unsplashApi)
+      images: imageArray(imageCodes, unsplashApi),
+      showPage: action('go to the page')
     }
   }));

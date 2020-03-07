@@ -15,14 +15,13 @@ export const slideAnimations = trigger('slideAnimation', [
         style({
           transform: 'translateX(100%)'
         }),
-        animate('0.5s ease-out', style('*'))
+        animate('0.5s ease-in-out', style('*'))
       ]),
       query(':leave', [
         animate(
-          '0.5s ease-in',
+          '0.5s ease-in-out',
           style({
-            transform: 'translateX(-100%)',
-            opacity: 0
+            transform: 'translateX(-100%)'
           })
         )
       ])
@@ -33,17 +32,15 @@ export const slideAnimations = trigger('slideAnimation', [
     group([
       query(':enter', [
         style({
-          transform: 'translateX(-100%)',
-          opacity: 0
+          transform: 'translateX(-100%)'
         }),
-        animate('0.5s ease-out', style('*'))
+        animate('0.5s ease-in-out', style('*'))
       ]),
       query(':leave', [
         animate(
-          '0.5s ease-in',
+          '0.5s ease-in-out',
           style({
-            transform: 'translateX(100%)',
-            opacity: 0
+            transform: 'translateX(100%)'
           })
         )
       ])

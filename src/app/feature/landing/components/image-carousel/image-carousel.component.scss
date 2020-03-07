@@ -1,3 +1,5 @@
+@import '../../../../style-themes/themes.scss';
+
 :host {
     display: block;
 }
@@ -14,7 +16,7 @@
 }
 
 .nav-btn {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba($black, 0.1);
     border: none;
     color: rgb(245, 245, 245);
     cursor: pointer;
@@ -43,35 +45,57 @@
 }
 
 ul {
-    display: flex;
+    height: 0;
     overflow: scroll;
+    position: relative;
+    padding-top: calc(100% * (9/16));
+
+    .slide {
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 100%;
+    }
+}
+
+h2 {
+    bottom: $spacing-100;
+    color: $white;
+    position: absolute;
+    left: 50%;
+    text-align: center;
+    text-shadow: 0 0 $spacing-100 $black;
+    transform: translateX(-50%);
+    width: 98%;
+    z-index: 2;
 }
 
 .img-container {
-    height: 0;
+    height: 100%;
     overflow: hidden;
-    padding-top: calc(100% * (9/16));
     position: relative;
     width: 100%;
+
+    img {
+        height: 100%;
+        object-fit: cover;
+        object-position: 50% 50%;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
 }
 
-img {
-    height: 100%;
-    object-fit: cover;
-    object-position: 50% 50%;
-    position: absolute;
-    top: 0;
-    width: 100%;
-}
 
 .icon {
-    font-size: 6rem;
+    font-size: $font-size-900;
     height: auto;
     width: auto;
 }
 
 .bullet-container {
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: rgba($black, 0.05);
     bottom: 0;
     left: 50%;
     position: absolute;
@@ -87,14 +111,22 @@ img {
     border: none;
     border: 0.0625rem solid rgb(245, 245, 245);
     border-radius: 50%;
-    background-color: rgba(0, 0, 0, 0);
+    background-color: rgba($black, 0);
     cursor: pointer;
-    height: 0.5rem;
+    height: $spacing-100;
     padding: 0;
-    width: 0.5rem;
+    width: $spacing-100;
 }
 
 .selected {
     background-color: rgb(37, 130, 167);
     border-color: rgb(37, 130, 167);
+}
+
+@media only screen and (min-width: 37.5rem) {
+    h2 {
+        bottom: $spacing-300;
+        font-size: $font-size-800;
+        line-height: 3.5rem;
+    }
 }

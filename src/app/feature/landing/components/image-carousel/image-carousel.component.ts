@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ShowVideo } from 'src/app/shared/layout/card/card.component';
 import { Image } from '../../../../global/models/global-models';
 import { slideAnimations } from './image-carousel.animations';
 
@@ -9,9 +10,11 @@ import { slideAnimations } from './image-carousel.animations';
   animations: [slideAnimations]
 })
 export class ImageCarouselComponent implements OnInit {
-  @Input() images: Image[];
+  @Input() images: CarouselImage[];
   @Input() selectedImage: number = 0;
   @Input() intervalTime: number = 5000;
+
+  @Output() showPage: EventEmitter<ShowVideo> = new EventEmitter();
 
   private timerId;
 
@@ -19,6 +22,10 @@ export class ImageCarouselComponent implements OnInit {
     if (this.images) {
       this.timerId = this.startImageInterval();
     }
+  }
+
+  public onTriggerPage(id: number, type: 'tv' | 'movie') {
+    this.showPage.emit({ id, type });
   }
 
   public onBack(): void {
@@ -46,4 +53,9 @@ export class ImageCarouselComponent implements OnInit {
     this.selectedImage =
       this.selectedImage !== this.images.length - 1 ? ++this.selectedImage : 0;
   }
+}
+
+export interface CarouselImage extends Image {
+  id: number;
+  type: 'tv' | 'movie';
 }

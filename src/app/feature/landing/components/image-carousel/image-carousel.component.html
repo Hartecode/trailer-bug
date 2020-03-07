@@ -1,25 +1,30 @@
 <div *ngIf="images" class="container">
-  <button  class="nav-btn" (click)="onBack()">
+  <button  class="nav-btn" [attr.aria-label]="'back'" (click)="onBack()">
     <mat-icon class="icon" label="back">
       <i>navigate_before</i>
     </mat-icon>
   </button>
-  <button class="nav-btn" (click)="onForward()">
+  <button class="nav-btn" [attr.aria-label]="'forward'" (click)="onForward()">
     <mat-icon class="icon" label="forward">
       <i>navigate_next</i>
     </mat-icon>
   </button>
   <ul [@slideAnimation]="selectedImage">
     <ng-container *ngFor="let img of images; let i = index">
-      <li *ngIf="selectedImage === i" 
-        class="img-container"
+      <li 
+        *ngIf="selectedImage === i"
+        (click)="onTriggerPage(img.id, img.type)"
+        class="slide"
         (swiperight)="onBack()"
         (swipeleft)="onForward()">
-        <img [src]="img.src" [alt]="img.alt" [title]="img.title" />
+        <div class="img-container">
+          <img [src]="img.src" [alt]="img.alt" [title]="img.title" />
+        </div>
+        <h2>{{img.title}}</h2>
       </li>
     </ng-container>
   </ul>
-  <ul class="bullet-container">
+  <!-- <ul class="bullet-container">
     <li *ngFor="let img of images; let i = index"
     class="bullet"
     >
@@ -31,5 +36,5 @@
         [attr.aria.label]="img.title">
       </button>
     </li>
-  </ul>
+  </ul> -->
 </div>
