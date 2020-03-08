@@ -12,7 +12,7 @@ export const imageCarouselSchema: NgModule = {
 
 @NgModule({
   declarations: [ImageCarouselComponent],
-  imports: [CommonModule, MatIconModule],
+  imports: [CommonModule, MatIconModule, PanModule],
   exports: [ImageCarouselComponent]
 })
 export class ImageCarouselModule {}
