@@ -1,6 +1,9 @@
 <div 
   *ngIf="images"
   class="container"
+  agPan
+  (agPanRight)="onBack()"
+  (agPanLeft)="onForward()"
   >
   <button  class="nav-btn" [attr.aria-label]="'back'" (click)="onBack()">
     <mat-icon class="icon" label="back">
@@ -19,10 +22,7 @@
         agPan
         (click)="onTriggerPage(img.id, img.type)"
         class="slide">
-        <div class="img-container"
-          agPan
-          (agPanRight)="onBack()"
-          (agPanLeft)="onForward()">
+        <div class="img-container">
           <img
             draggable="false"
             [src]="img.src"
