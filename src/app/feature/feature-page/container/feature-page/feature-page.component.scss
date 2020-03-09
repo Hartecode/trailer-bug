@@ -1,6 +1,7 @@
 @import '../../../../style-themes/themes.scss';
 
 $play-icon-size: 5rem;
+$back-icon-size: $spacing-400;
 
 :host {
     display: block;
@@ -126,5 +127,18 @@ main {
     app-video-thumbnail {
         flex: 1 0 43%;
         padding: $spacing-200;
+    }
+}
+
+.back-btn {
+    font-size: $font-size-200;
+    color: $title-color-100;
+    display: flex;
+    align-items: center;
+
+    mat-icon {
+        font-size: $back-icon-size;
+        height: $back-icon-size;
+        width: $back-icon-size;
     }
 }

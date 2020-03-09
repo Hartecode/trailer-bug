@@ -2,6 +2,14 @@
     *ngIf="(data$ | async) as data"
     [ngStyle]="{background: 'fixed no-repeat center/cover url(' + data.backdrop + ')'}">
     <section class="main-container">
+        <button mat-button (click)="goBack()" *ngIf="previousPage">
+            <div class="back-btn">
+                <mat-icon>
+                    <i>keyboard_arrow_left</i>
+                </mat-icon>
+                Back
+            </div>
+        </button>
         <section class="detail-container">
             <div class="container-poster">
                 <img [src]="data.poster" alt="data.title"> 

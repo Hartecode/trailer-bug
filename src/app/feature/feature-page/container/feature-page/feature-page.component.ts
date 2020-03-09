@@ -1,4 +1,11 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { DOCUMENT, Location } from '@angular/common';
+import {
+  Component,
+  ElementRef,
+  Inject,
+  OnInit,
+  ViewChild
+} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { combineLatest, Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
@@ -11,9 +18,10 @@ import { FeaturePageService } from '../../service/feature-page.service';
   templateUrl: './feature-page.component.html',
   styleUrls: ['./feature-page.component.scss']
 })
-export class FeaturePageComponent {
+export class FeaturePageComponent implements OnInit {
   @ViewChild('videoList') videosRef: ElementRef;
 
+  public previousPage: boolean = false;
   public data$: Observable<FeaturePageData> = combineLatest([
     this.route.parent.url,
     this.route.paramMap
@@ -31,11 +39,22 @@ export class FeaturePageComponent {
     })
   );
 
+  ngOnInit() {
+    this.previousPage =
+      this._document.referrer.indexOf(window.location.host) !== -1;
+  }
+
   constructor(
     private route: ActivatedRoute,
     private loader: LazyLoaderService,
-    private featureService: FeaturePageService
+    private featureService: FeaturePageService,
+    private _location: Location,
+    @Inject(DOCUMENT) private _document: Document
   ) {}
+
+  public goBack(): void {
+    this._location.back();
+  }
 
   public scrollToVideos(): void {
     this.videosRef.nativeElement.scrollIntoView({ behavior: 'smooth' });

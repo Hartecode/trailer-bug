@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule, Routes } from '@angular/router';
 import { VideoThumbnailModule } from 'src/app/shared/layout/video-thumbnail/video-thumbnail.module';
@@ -14,7 +15,7 @@ const crisisCenterRoutes: Routes = [
 
 export const featureSchema: NgModule = {
   declarations: [FeaturePageComponent],
-  imports: [CommonModule, MatIconModule],
+  imports: [CommonModule, MatIconModule, MatButtonModule],
   exports: [FeaturePageComponent]
 };
 
@@ -23,6 +24,7 @@ export const featureSchema: NgModule = {
   imports: [
     CommonModule,
     MatIconModule,
+    MatButtonModule,
     VideoThumbnailModule,
     RouterModule.forChild(crisisCenterRoutes)
   ],
