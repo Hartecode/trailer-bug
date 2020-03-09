@@ -40,3 +40,20 @@
     }
 
 }
+
+.search-btns {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: $spacing-200;
+    
+    div {
+        padding: $spacing-200;
+        text-align: center;
+    }
+
+    button {
+        color: $title-color-100;
+    }
+}

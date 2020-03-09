@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { RouterModule, Routes } from '@angular/router';
 import { CardModule } from '../../shared/layout/card/card.module';
 import { SearchComponent } from './container/search/search.component';
@@ -16,6 +17,7 @@ export const searchSchema: NgModule = {
   imports: [
     CardModule,
     CommonModule,
+    MatButtonModule,
     RouterModule.forChild(crisisCenterRoutes)
   ],
   exports: [RouterModule]
@@ -26,6 +28,7 @@ export const searchSchema: NgModule = {
   imports: [
     CardModule,
     CommonModule,
+    MatButtonModule,
     RouterModule.forChild(crisisCenterRoutes)
   ],
   exports: [RouterModule]
