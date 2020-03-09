@@ -12,7 +12,7 @@
     "build-storybook": "build-storybook",
     "format": "tslint 'src/**/*.{ts,tsx}'",
     "build-prod": "ng build --prod",
-    "build-serve": "ng build --prod && http-server -p 8080 -c-1 dist/trailer-bug"
+    "build-serve": "ng build --prod && http-server --proxy 8080? -c-1 dist/trailer-bug"
   },
   "husky": {
     "hooks": {
