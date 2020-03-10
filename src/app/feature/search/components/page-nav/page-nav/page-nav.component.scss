@@ -1,0 +1,44 @@
+@import '../../../../../style-themes/themes.scss';
+
+$icon-mobile-size: $spacing-500;
+$icon-lg-size: $spacing-400;
+
+:host {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: $spacing-200 0;
+}
+
+.pagination {
+    padding: $spacing-200;
+    text-align: center;
+}
+
+button {
+    color: $title-color-100;
+}
+
+.inner-btn {
+  align-items: center;
+  display: flex;
+}
+
+.nav-icon {
+  font-size: $icon-lg-size;
+  height: $icon-lg-size;
+  width: $icon-lg-size;
+}
+
+@media screen and (max-width: 30rem) {
+  .nav-name {
+    display: none;
+  }
+
+  .nav-icon {
+    font-size: $icon-mobile-size;
+    height: $icon-mobile-size;
+    width: $icon-mobile-size;
+  }
+}

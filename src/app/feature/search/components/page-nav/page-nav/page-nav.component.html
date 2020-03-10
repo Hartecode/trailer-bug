@@ -1,0 +1,28 @@
+<button
+  mat-button
+  (click)="backPage()"
+  [attr.aria-label]="'Previous Page'"
+  [disabled]="data?.currentPage <= 1">
+  <div class="inner-btn">
+    <mat-icon class="nav-icon" label="bug">
+      <i>keyboard_arrow_left</i>
+    </mat-icon>
+    <div class="nav-name">Previous Page</div>
+  </div>
+</button>
+
+<div class="pagination">Page {{data?.currentPage}} of {{data?.totalPages}}</div>
+
+<button
+  mat-button
+  (click)="nextPage()"
+  [attr.aria-label]="'Next Page'"
+  [disabled]="data?.currentPage >= data?.totalPages">
+  <div class="inner-btn">
+    <div class="nav-name">Next Page</div>
+    <mat-icon class="nav-icon" label="bug">
+      <i>keyboard_arrow_right</i>
+    </mat-icon>
+  </div>
+  
+</button>
