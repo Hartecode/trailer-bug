@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule, Routes } from '@angular/router';
 import { CardModule } from '../../shared/layout/card/card.module';
+import { PageNavModule } from './components/page-nav/page-nav.module';
 import { SearchComponent } from './container/search/search.component';
 
 const crisisCenterRoutes: Routes = [
@@ -18,6 +19,7 @@ export const searchSchema: NgModule = {
     CardModule,
     CommonModule,
     MatButtonModule,
+    PageNavModule,
     RouterModule.forChild(crisisCenterRoutes)
   ],
   exports: [RouterModule]
@@ -29,6 +31,7 @@ export const searchSchema: NgModule = {
     CardModule,
     CommonModule,
     MatButtonModule,
+    PageNavModule,
     RouterModule.forChild(crisisCenterRoutes)
   ],
   exports: [RouterModule]

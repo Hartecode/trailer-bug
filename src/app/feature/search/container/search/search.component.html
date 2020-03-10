@@ -1,17 +1,15 @@
 <ng-container *ngIf="(searchResults$ | async) as res ; else noSearch">
   <ng-container *ngIf="blankValue; else noSearch">
     <main *ngIf="res.results.length >= 1 ; else noResults" class="main-results">
-      <section class="search-btns">
-        <button
-          mat-button
-          (click)="backPage(res.currentPage)"
-          [disabled]="res.currentPage <= 1">Previous Page</button>
-        <div>Page {{res.currentPage}} of {{res.totalPages}}</div>
-        <button
-          mat-button
-          (click)="nextPage(res.currentPage, res.totalPages)"
-          [disabled]="res.currentPage >= res.totalPages">Next Page</button>
-      </section>
+      <app-page-nav
+        [data]="{
+          name: 'Page',
+          currentPage: res.currentPage,
+          totalPages:  res.totalPages
+        }"
+        (previous)="backPage(res.currentPage)"
+        (next)="nextPage(res.currentPage, res.totalPages)">
+      </app-page-nav>
       <section class="container">
         <app-card 
           *ngFor="let data of res.results"
@@ -20,17 +18,15 @@
           (showVideo)="openModel($event)">
         </app-card>
       </section>
-      <section class="search-btns">
-        <button 
-          mat-button
-          (click)="backPage(res.currentPage)"
-          [disabled]="res.currentPage <= 1">Previous Page</button>
-        <div>Page {{res.currentPage}} of {{res.totalPages}}</div>
-        <button 
-          mat-button
-          (click)="nextPage(res.currentPage, res.totalPages)"
-          [disabled]="res.currentPage >= res.totalPages">Next Page</button>
-      </section>
+      <app-page-nav
+        [data]="{
+          name: 'Page',
+          currentPage: res.currentPage,
+          totalPages:  res.totalPages
+        }"
+        (previous)="backPage(res.currentPage)"
+        (next)="nextPage(res.currentPage, res.totalPages)">
+      </app-page-nav>
     </main>
   </ng-container>
   
