@@ -7,6 +7,7 @@ import {
   distinctUntilChanged,
   filter,
   map,
+  shareReplay,
   switchMap,
   tap
 } from 'rxjs/operators';
@@ -28,11 +29,12 @@ export class GeneralSearchService {
     .asObservable()
     .pipe(distinctUntilChanged());
   private searchBS: BehaviorSubject<string> = new BehaviorSubject<string>('');
-  private search$: Observable<string> = this.searchBS.asObservable().pipe(
+  public search$: Observable<string> = this.searchBS.asObservable().pipe(
     filter(val => val.length > 1),
     debounceTime(500),
     distinctUntilChanged(),
-    tap(val => this.pageBS.next(1))
+    tap(val => this.pageBS.next(1)),
+    shareReplay(1)
   );
   public searchResults$ = this.runSearch();
 
@@ -108,7 +110,8 @@ export class GeneralSearchService {
           results: []
         };
         return of(errResp);
-      })
+      }),
+      shareReplay(1)
     );
   }
 }
