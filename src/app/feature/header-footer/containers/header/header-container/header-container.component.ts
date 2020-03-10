@@ -19,7 +19,7 @@ export class HeaderContainerComponent {
 
   public goToSearch(val: string): void {
     if (val) {
-      this.router.navigate(['/', 'search']);
+      this.router.navigate(['/', 'search'], { queryParams: { query: val } });
     }
   }
 

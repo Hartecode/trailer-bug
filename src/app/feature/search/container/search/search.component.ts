@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { LazyLoaderService } from 'src/app/module-injecter/services/lazy-loader/lazy-loader.service';
 import { ShowVideo } from 'src/app/shared/layout/card/card.component';
@@ -13,15 +13,21 @@ import {
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss']
 })
-export class SearchComponent {
+export class SearchComponent implements OnInit {
   public searchResults$: Observable<SearchResults> = this.searchService
     .searchResults$;
 
   constructor(
     private router: Router,
     private loader: LazyLoaderService,
-    private searchService: GeneralSearchService
+    private searchService: GeneralSearchService,
+    private route: ActivatedRoute
   ) {}
+
+  ngOnInit() {
+    const param: string = this.route.snapshot.queryParams.query || '';
+    this.searchService.updateSearch(param);
+  }
 
   public navigateToPage(e: ShowVideo) {
     this.router.navigate([`/${e.type}`, e.id]);
