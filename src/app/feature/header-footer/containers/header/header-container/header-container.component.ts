@@ -2,8 +2,10 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { filter, tap } from 'rxjs/operators';
-import { GeneralSearchService } from 'src/app/feature/search/services/general-search/general-search.service';
-// import { LazyLoaderService } from 'src/app/module-injecter/services/lazy-loader/lazy-loader.service';
+import {
+  GeneralSearchService,
+  SearchState
+} from 'src/app/feature/search/services/general-search/general-search.service';
 
 @Component({
   selector: 'app-header-container',
@@ -12,17 +14,22 @@ import { GeneralSearchService } from 'src/app/feature/search/services/general-se
 })
 export class HeaderContainerComponent implements OnInit, OnDestroy {
   public searchValue: string = '';
-  private searchSerVal$: Observable<string> = this.searchService.search$.pipe(
-    filter(val => val !== this.searchValue),
+  private searchSerVal$: Observable<
+    SearchState
+  > = this.searchService.searchState$.pipe(
+    filter(val => {
+      const { query } = val;
+      return query !== this.searchValue;
+    }),
     tap(val => {
-      this.searchValue = val;
+      const { query } = val;
+      this.searchValue = query;
     })
   );
   private subscription: Subscription[] = [];
 
   constructor(
     private router: Router,
-    // private loader: LazyLoaderService,
     private searchService: GeneralSearchService
   ) {}
 
