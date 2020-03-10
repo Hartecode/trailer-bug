@@ -7,16 +7,19 @@
 }
 
 .main-results {
+    display: flex;
+    flex-direction: column;
     background-color: $page-background-color;
     max-width: $min-layout-width-200;
     margin: auto;
+    min-height: $min-layout-height;
     padding: 0 $spacing-300;
 }
 
 .container {
     display: grid;
     grid-gap: $spacing-200 $spacing-100;
-    grid-template-columns: repeat(auto-fit, minmax(9.875rem, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(9.875rem, 1fr));
     justify-content: center;
 }
 
@@ -46,7 +49,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: $spacing-200;
+    padding: $spacing-200 0;
     
     div {
         padding: $spacing-200;
@@ -55,5 +58,10 @@
 
     button {
         color: $title-color-100;
+    }
+
+    &:last-of-type{
+        flex: 1;
+        align-content: flex-end;
     }
 }

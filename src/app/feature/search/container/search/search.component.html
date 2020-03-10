@@ -1,36 +1,39 @@
 <ng-container *ngIf="(searchResults$ | async) as res ; else noSearch">
-  <main *ngIf="res.results.length > 1 ; else noResults" class="main-results">
-    <section class="search-btns">
-      <button
-        mat-button
-        (click)="backPage(res.currentPage)"
-        [disabled]="res.currentPage <= 1">Previous Page</button>
-      <div>Page {{res.currentPage}} of {{res.totalPages}}</div>
-      <button
-        mat-button
-        (click)="nextPage(res.currentPage, res.totalPages)"
-        [disabled]="res.currentPage >= res.totalPages">Next Page</button>
-    </section>
-    <section class="container">
-      <app-card 
-        *ngFor="let data of res.results"
-        [data]="data"
-        (showPage)="navigateToPage($event)"
-        (showVideo)="openModel($event)">
-      </app-card>
-    </section>
-    <section class="search-btns">
-      <button 
-        mat-button
-        (click)="backPage(res.currentPage)"
-        [disabled]="res.currentPage <= 1">Previous Page</button>
-      <div>Page {{res.currentPage}} of {{res.totalPages}}</div>
-      <button 
-        mat-button
-        (click)="nextPage(res.currentPage, res.totalPages)"
-        [disabled]="res.currentPage >= res.totalPages">Next Page</button>
-    </section>
-  </main>
+  <ng-container *ngIf="blankValue; else noSearch">
+    <main *ngIf="res.results.length >= 1 ; else noResults" class="main-results">
+      <section class="search-btns">
+        <button
+          mat-button
+          (click)="backPage(res.currentPage)"
+          [disabled]="res.currentPage <= 1">Previous Page</button>
+        <div>Page {{res.currentPage}} of {{res.totalPages}}</div>
+        <button
+          mat-button
+          (click)="nextPage(res.currentPage, res.totalPages)"
+          [disabled]="res.currentPage >= res.totalPages">Next Page</button>
+      </section>
+      <section class="container">
+        <app-card 
+          *ngFor="let data of res.results"
+          [data]="data"
+          (showPage)="navigateToPage($event)"
+          (showVideo)="openModel($event)">
+        </app-card>
+      </section>
+      <section class="search-btns">
+        <button 
+          mat-button
+          (click)="backPage(res.currentPage)"
+          [disabled]="res.currentPage <= 1">Previous Page</button>
+        <div>Page {{res.currentPage}} of {{res.totalPages}}</div>
+        <button 
+          mat-button
+          (click)="nextPage(res.currentPage, res.totalPages)"
+          [disabled]="res.currentPage >= res.totalPages">Next Page</button>
+      </section>
+    </main>
+  </ng-container>
+  
 </ng-container>
 
 

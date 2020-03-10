@@ -7,8 +7,7 @@ import {
   distinctUntilChanged,
   map,
   shareReplay,
-  switchMap,
-  tap
+  switchMap
 } from 'rxjs/operators';
 import { MovieDBConfigService } from 'src/app/global/movieDBConfig/movie-dbconfig.service';
 import { Card } from 'src/app/shared/layout/card/card.component';
@@ -23,6 +22,11 @@ import {
   providedIn: 'root'
 })
 export class GeneralSearchService {
+  private defaultResponse: SearchResults = {
+    currentPage: 0,
+    totalPages: 0,
+    results: []
+  };
   private defaultState: SearchState = {
     query: '',
     page: 1
@@ -67,25 +71,28 @@ export class GeneralSearchService {
 
   public updateSearch(val: string): void {
     const query: string = val.trim();
-    if (query) {
-      const { page } = this.searchStateBS.getValue();
-      this.searchStateBS.next({
-        query,
-        page
-      });
-    }
+    const { page } = this.searchStateBS.getValue();
+    this.searchStateBS.next({
+      query,
+      page
+    });
   }
 
   private runSearch(): Observable<SearchResults> {
     return this.searchState$.pipe(
       switchMap(searchState => {
         const { query, page } = searchState;
-        return this.http.get<GeneralSearchResponse>(
-          this.movieApiConfig.search(query, page),
-          this.httpOptions
-        );
+        if (query) {
+          return this.http.get<GeneralSearchResponse>(
+            this.movieApiConfig.search(query, page),
+            this.httpOptions
+          );
+        }
+        return of(null);
       }),
-      map(res => {
+      map((res: GeneralSearchResponse | null) => {
+        if (!res) return this.defaultResponse;
+
         return {
           currentPage: res.page,
           totalPages: res.total_pages,
@@ -119,12 +126,7 @@ export class GeneralSearchService {
       catchError(err => {
         // tslint:disable-next-line: no-console
         console.log(err);
-        const errResp: SearchResults = {
-          currentPage: 0,
-          totalPages: 0,
-          results: []
-        };
-        return of(errResp);
+        return of(this.defaultResponse);
       }),
       shareReplay(1)
     );

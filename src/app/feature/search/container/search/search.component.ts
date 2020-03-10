@@ -15,6 +15,7 @@ import {
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit, OnDestroy {
+  public blankValue: boolean = false;
   public searchResults$: Observable<SearchResults> = this.searchService
     .searchResults$;
   private subscriptions: Subscription[] = [];
@@ -36,6 +37,7 @@ export class SearchComponent implements OnInit, OnDestroy {
         .pipe(
           tap(searchState => {
             const { query, page } = searchState;
+            this.blankValue = !!query;
             const params = {
               queryParams: query && page ? { query, page } : { query }
             };
