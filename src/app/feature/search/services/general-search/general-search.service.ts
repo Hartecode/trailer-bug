@@ -1,11 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, combineLatest, Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import {
   catchError,
   debounceTime,
   distinctUntilChanged,
-  filter,
   map,
   shareReplay,
   switchMap,
@@ -24,16 +23,16 @@ import {
   providedIn: 'root'
 })
 export class GeneralSearchService {
-  private pageBS: BehaviorSubject<number> = new BehaviorSubject<number>(1);
-  private page$: Observable<number> = this.pageBS
-    .asObservable()
-    .pipe(distinctUntilChanged());
-  private searchBS: BehaviorSubject<string> = new BehaviorSubject<string>('');
-  public search$: Observable<string> = this.searchBS.asObservable().pipe(
-    filter(val => val.length > 1),
+  private defaultState: SearchState = {
+    query: '',
+    page: 1
+  };
+  private searchStateBS: BehaviorSubject<SearchState> = new BehaviorSubject<
+    SearchState
+  >(this.defaultState);
+  public searchState$: Observable<SearchState> = this.searchStateBS.pipe(
     debounceTime(500),
     distinctUntilChanged(),
-    tap(val => this.pageBS.next(1)),
     shareReplay(1)
   );
   public searchResults$ = this.runSearch();
@@ -51,22 +50,38 @@ export class GeneralSearchService {
     private http: HttpClient
   ) {}
 
-  public updatePage(num: number) {
-    this.pageBS.next(num);
+  public updateSearchState(query: string, page: number) {
+    this.searchStateBS.next({
+      query,
+      page
+    });
+  }
+
+  public updatePage(page: number) {
+    const { query } = this.searchStateBS.getValue();
+    this.searchStateBS.next({
+      query,
+      page
+    });
   }
 
   public updateSearch(val: string): void {
-    const userInput: string = val.trim();
-    if (userInput) {
-      this.searchBS.next(userInput);
+    const query: string = val.trim();
+    if (query) {
+      const { page } = this.searchStateBS.getValue();
+      this.searchStateBS.next({
+        query,
+        page
+      });
     }
   }
 
   private runSearch(): Observable<SearchResults> {
-    return combineLatest([this.search$, this.page$]).pipe(
-      switchMap(([search, page]) => {
+    return this.searchState$.pipe(
+      switchMap(searchState => {
+        const { query, page } = searchState;
         return this.http.get<GeneralSearchResponse>(
-          this.movieApiConfig.search(search, page),
+          this.movieApiConfig.search(query, page),
           this.httpOptions
         );
       }),
@@ -120,4 +135,9 @@ export interface SearchResults {
   currentPage: number;
   totalPages: number;
   results: Card[];
+}
+
+export interface SearchState {
+  query: string;
+  page: number;
 }
