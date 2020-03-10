@@ -40,8 +40,16 @@ export class FeaturePageComponent implements OnInit {
   );
 
   ngOnInit() {
-    this.previousPage =
-      this._document.referrer.indexOf(window.location.host) !== -1;
+    const sitUrls = [
+      'https://trailerbug.netlify.com',
+      'http://localhost:4200',
+      'http://localhost:8080'
+    ];
+    const previousPageUrl = this._document.referrer;
+
+    this.previousPage = sitUrls
+      .map(v => previousPageUrl.includes(v))
+      .includes(true);
   }
 
   constructor(
