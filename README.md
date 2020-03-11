@@ -29,6 +29,10 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
   <li>Angular Material</li>
   <li>Typescript</li>
   <li>RXJS</li>
+  <li>SCSS</li>
+  <li>Storybook</li>
+  <li>Jasmine w/ Karma</li>
+  <li>Husky</li>
   <li>PWA</li>
   <li>Webpack</li>
   <li>Mobile first design</li>
@@ -37,6 +41,6 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 ## Third Party Resources
 
 <ul>
-  <li>[Netlify](https://www.netlify.com/)</li>
-  <li>[The Movie DB](https://www.themoviedb.org/)</li>
+  <li><a href="https://www.netlify.com/">Netlify</a></li>
+  <li><a href="https://www.themoviedb.org/">The Movie DB</a></li>
 </ul>
