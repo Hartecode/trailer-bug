@@ -1,6 +1,10 @@
 # TrailerBug
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.9.
+Trailer Bug is a fun app to allow users to search or discover movies or tv show trailers to watch. This is a great app for anyone who loves watching trailers more then the actual movie or show. [Demo](https://trailerbug.netlify.com/) this app at `https://trailerbug.netlify.com/`. 
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.3
+
+<img src="./src/assets/img/screen-shot-1.png" alt="home page">
 
 ## Development server
 
@@ -18,10 +22,21 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+## Technology
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+<ul>
+  <li>Angular 9</li>
+  <li>Angular Material</li>
+  <li>Typescript</li>
+  <li>RXJS</li>
+  <li>PWA<li>
+  <li>Webpack</li>
+  <li>Mobile first design<li>
+<ul>
 
-## Further help
+## Third Party Resources
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+<ul>
+  <li>[Netlify](https://www.netlify.com/)</li>
+  <li>[The Movie DB](https://www.themoviedb.org/)</li>
+</ul>
