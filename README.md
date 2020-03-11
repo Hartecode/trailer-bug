@@ -29,10 +29,10 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
   <li>Angular Material</li>
   <li>Typescript</li>
   <li>RXJS</li>
-  <li>PWA<li>
+  <li>PWA</li>
   <li>Webpack</li>
-  <li>Mobile first design<li>
-<ul>
+  <li>Mobile first design</li>
+</ul>
 
 ## Third Party Resources
 
