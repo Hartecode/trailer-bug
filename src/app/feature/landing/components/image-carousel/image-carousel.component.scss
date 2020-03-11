@@ -7,30 +7,23 @@
 .container {
     position: relative;
     overflow: hidden;
-
-    &:hover {
-        button {
-            opacity: 1;
-        }
-    }
 }
 
 .nav-btn {
     align-items: center;
-    background-color: rgba($black, 0.1);
+    background-color: rgba($black, 0.3);
     border: none;
     color: rgb(245, 245, 245);
     cursor: pointer;
     display: flex;
     height: 100%;
     justify-content: center;
-    opacity: 0;
     overflow: hidden;
     padding: 0;
     position: absolute;
     top: 0;
-    z-index: 99;
-    width: 10%;
+    z-index: 2;
+    width: 15%;
 
     &:active {
         color: rgb(37, 130, 167);
@@ -95,39 +88,21 @@ h2 {
     width: auto;
 }
 
-.bullet-container {
-    background-color: rgba($black, 0.05);
-    bottom: 0;
-    left: 50%;
-    position: absolute;
-    transform: translate(-50%, 0);
-    z-index: 99;
-}
-
-.bullet {
-    margin: 1rem;
-}
-
-.bullet-btn {
-    border: none;
-    border: 0.0625rem solid rgb(245, 245, 245);
-    border-radius: 50%;
-    background-color: rgba($black, 0);
-    cursor: pointer;
-    height: $spacing-100;
-    padding: 0;
-    width: $spacing-100;
-}
-
-.selected {
-    background-color: rgb(37, 130, 167);
-    border-color: rgb(37, 130, 167);
-}
-
 @media only screen and (min-width: 37.5rem) {
     h2 {
         bottom: $spacing-300;
         font-size: $font-size-800;
         line-height: 3.5rem;
+    }
+
+    .nav-btn {
+        opacity: 0;
+        width: 10%;
+    }
+
+    .container:hover {
+        button {
+            opacity: 1;
+        }
     }
 }
