@@ -9,6 +9,14 @@ import { SearchComponent } from './container/search/search.component';
 const crisisCenterRoutes: Routes = [
   {
     path: '',
+    component: SearchComponent,
+    children: [
+      // {path: '', component: },
+      // {path: 'result/:index', component: },
+    ]
+  },
+  {
+    path: '**',
     component: SearchComponent
   }
 ];
