@@ -1,5 +1,7 @@
 # TrailerBug
 
+*This project is actively being updated some tooling and functionality may change*
+
 Trailer Bug is a fun app to allow users to search or discover movies or tv show trailers to watch. This is a great app for anyone who loves watching trailers more then the actual movie or show. [Demo](https://trailerbug.netlify.com/) this app at `https://trailerbug.netlify.com/`. 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.3
